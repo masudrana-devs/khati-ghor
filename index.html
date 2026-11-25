@@ -1,1830 +1,342 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="bn">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <title>খাঁটি ঘর | KHATI GHOR</title>
-    <link rel="preconnect" href="https://fonts.googleapis.com" />
-    <link
-      href="https://fonts.googleapis.com/css2?family=Hind+Siliguri:wght@400;500;600;700&family=Playfair+Display:wght@500;700&family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap"
-      rel="stylesheet"
-    />
-    <script src="https://cdn.tailwindcss.com"></script>
-    <script>
-      tailwind.config = { darkMode: "class" };
-    </script>
-    <style>
-      :root {
-        --bg: #faf8f5;
-        --card: #fff;
-        --bd: #e7e5e4;
-        --pri: #1b4332;
-        --acc: #d97706;
-        --tx: #1c1917;
-        --mu: #57534e;
-        --soft: #34d399;
-      }
-      .dark {
-        --bg: #0b120e;
-        --card: #131f18;
-        --bd: #23382c;
-        --pri: #34d399;
-        --acc: #f59e0b;
-        --tx: #f4f4f5;
-        --mu: #a1a1aa;
-      }
-      body {
-        background: var(--bg);
-        color: var(--tx);
-        font-family: "Plus Jakarta Sans", "Hind Siliguri", sans-serif;
-        transition:
-          background-color 0.3s,
-          color 0.3s;
-      }
-      html[lang="bn"] body {
-        font-family: "Hind Siliguri", "Plus Jakarta Sans", sans-serif;
-      }
-      .serif {
-        font-family: "Playfair Display", serif;
-      }
-      .card {
-        background: var(--card);
-        border: 1px solid var(--bd);
-        transition:
-          background-color 0.3s,
-          border-color 0.3s;
-      }
-      .mu {
-        color: var(--mu);
-      }
-      .pri {
-        color: var(--pri);
-      }
-      .acc {
-        color: var(--acc);
-      }
-      .btn {
-        background: var(--acc);
-        color: #fff;
-        font-weight: 600;
-        border-radius: 999px;
-        padding: 0.65rem 1.4rem;
-        transition:
-          filter 0.2s,
-          transform 0.1s;
-      }
-      .btn:hover {
-        filter: brightness(1.08);
-      }
-      .btn:active {
-        transform: scale(0.97);
-      }
-      .btn2 {
-        border: 1.5px solid var(--pri);
-        color: var(--pri);
-        font-weight: 600;
-        border-radius: 999px;
-        padding: 0.65rem 1.4rem;
-      }
-      .btn2:hover {
-        background: var(--pri);
-        color: var(--bg);
-      }
-      .pill {
-        border: 1px solid var(--bd);
-        border-radius: 999px;
-        padding: 0.35rem 0.9rem;
-        font-size: 0.85rem;
-        min-height: 36px;
-      }
-      .pill.on {
-        background: var(--pri);
-        color: var(--bg);
-        border-color: var(--pri);
-      }
-      .inp {
-        width: 100%;
-        background: var(--bg);
-        border: 1px solid var(--bd);
-        border-radius: 0.6rem;
-        padding: 0.6rem 0.8rem;
-        color: var(--tx);
-      }
-      .inp:focus,
-      button:focus-visible,
-      a:focus-visible {
-        outline: 2px solid var(--acc);
-        outline-offset: 2px;
-      }
-      .img svg {
-        width: 62%;
-        height: 86%;
-      }
-      .ico svg {
-        width: 72px;
-        height: 54px;
-        margin: 0 auto;
-      }
-      .img {
-        background: linear-gradient(135deg, #e8f0ea, #f8ebcf);
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        font-size: 3rem;
-        overflow: hidden;
-      }
-      .img img {
-        width: 100%;
-        height: 100%;
-        object-fit: cover;
-      }
-      .glass {
-        backdrop-filter: blur(12px);
-        background: color-mix(in srgb, var(--bg) 80%, transparent);
-      }
-      .modal {
-        position: fixed;
-        inset: 0;
-        z-index: 70;
-        background: rgba(0, 0, 0, 0.55);
-        display: none;
-        align-items: center;
-        justify-content: center;
-        padding: 1rem;
-      }
-      .modal.open {
-        display: flex;
-      }
-      #drawer {
-        transition: transform 0.3s;
-      }
-      .brand {
-        display: flex;
-        align-items: center;
-        gap: 0.5rem;
-        flex-shrink: 0;
-        white-space: nowrap;
-      }
-      .brand svg {
-        width: 2.25rem;
-        height: 2.25rem;
-        flex-shrink: 0;
-      }
-      .brand .bn {
-        display: block;
-        font-weight: 700;
-        font-size: 1.125rem;
-        line-height: 1.1;
-        color: var(--pri);
-      }
-      .brand .en {
-        display: block;
-        margin-top: 3px;
-        font-family: "Playfair Display", serif;
-        font-size: 10px;
-        line-height: 1;
-        text-transform: uppercase;
-        letter-spacing: 0.22em;
-        color: var(--mu);
-      }
-      @media (max-width: 400px) {
-        .brand svg {
-          width: 1.9rem;
-          height: 1.9rem;
-        }
-        .brand .bn {
-          font-size: 1rem;
-        }
-        .brand .en {
-          font-size: 8.5px;
-          letter-spacing: 0.18em;
-        }
-      }
-      .hp {
-        padding: 0.35rem 0.6rem;
-      }
-      .hero {
-        background: linear-gradient(135deg, #e8f0ea, #f8ebcf);
-        display: grid;
-        grid-template-columns: 1fr 1fr;
-        place-items: center;
-        gap: 0.25rem;
-        padding: 1.25rem;
-      }
-      .hero svg {
-        width: 100%;
-        height: auto;
-      }
-      #mdrawer {
-        transform: translateX(100%);
-        visibility: hidden;
-        transition:
-          transform 0.3s ease,
-          visibility 0s 0.3s;
-      }
-      #mdrawer.open {
-        transform: none;
-        visibility: visible;
-        transition: transform 0.3s ease;
-      }
-      #mov {
-        opacity: 0;
-        pointer-events: none;
-        transition: opacity 0.3s;
-      }
-      #mov.open {
-        opacity: 1;
-        pointer-events: auto;
-      }
-      #mdrawer.open #mnav a {
-        animation: sl 0.35s both;
-      }
-      #mdrawer.open #mnav a:nth-child(2) {
-        animation-delay: 0.05s;
-      }
-      #mdrawer.open #mnav a:nth-child(3) {
-        animation-delay: 0.1s;
-      }
-      #mdrawer.open #mnav a:nth-child(4) {
-        animation-delay: 0.15s;
-      }
-      #mdrawer.open #mnav a:nth-child(5) {
-        animation-delay: 0.2s;
-      }
-      #mdrawer.open #mnav a:nth-child(6) {
-        animation-delay: 0.25s;
-      }
-      @keyframes sl {
-        from {
-          opacity: 0;
-          transform: translateX(18px);
-        }
-      }
-      @media (prefers-reduced-motion: reduce) {
-        #mdrawer.open #mnav a {
-          animation: none;
-        }
-      }
-      #langBtn span.on {
-        background: var(--pri);
-        color: var(--bg);
-      }
-      #langBtn span:nth-child(2),
-      #langBtn span:nth-child(4) {
-        border-left: 1px solid var(--bd);
-      }
-      .fade {
-        animation: fd 0.25s;
-      }
-      @keyframes fd {
-        from {
-          opacity: 0;
-          transform: translateY(-6px);
-        }
-      }
-      @media (prefers-reduced-motion: reduce) {
-        .fade {
-          animation: none;
-        }
-      }
-      @media (prefers-reduced-motion: reduce) {
-        * {
-          transition: none !important;
-        }
-      }
-    </style>
-  </head>
-  <body>
-    <svg width="0" height="0" style="position: absolute">
-      <symbol id="logo" viewBox="0 0 48 48">
-        <path
-          d="M8 30C8 15 20 7 38 6c0 16-8 28-24 28-2 0-4-1-6-4z"
-          fill="#2D6A4F"
-        />
-        <path
-          d="M12 32C18 24 25 18 33 12"
-          stroke="#FAF8F5"
-          stroke-width="1.8"
-          fill="none"
-          stroke-linecap="round"
-        />
-        <path
-          d="M34 26c4 5 6 8 6 11a6 6 0 01-12 0c0-3 2-6 6-11z"
-          fill="#D97706"
-        />
-      </symbol>
-    </svg>
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>খাঁটি ঘর | KHATI GHOR</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Hind+Siliguri:wght@400;500;600;700&family=Playfair+Display:wght@500;700&family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+<script src="https://cdn.tailwindcss.com"></script>
+<script>tailwind.config={darkMode:'class'}</script>
+<style>
+:root{--bg:#FAF8F5;--card:#fff;--bd:#E7E5E4;--pri:#1B4332;--acc:#D97706;--tx:#1C1917;--mu:#57534E;--soft:#34D399}
+.dark{--bg:#0B120E;--card:#131F18;--bd:#23382C;--pri:#34D399;--acc:#F59E0B;--tx:#F4F4F5;--mu:#A1A1AA}
+body{background:var(--bg);color:var(--tx);font-family:'Plus Jakarta Sans','Hind Siliguri',sans-serif;transition:background-color .3s,color .3s}
+html[lang=bn] body{font-family:'Hind Siliguri','Plus Jakarta Sans',sans-serif}
+.serif{font-family:'Playfair Display',serif}
+.card{background:var(--card);border:1px solid var(--bd);transition:background-color .3s,border-color .3s}
+.mu{color:var(--mu)}.pri{color:var(--pri)}.acc{color:var(--acc)}
+.btn{background:var(--acc);color:#fff;font-weight:600;border-radius:999px;padding:.65rem 1.4rem;transition:filter .2s,transform .1s}
+.btn:hover{filter:brightness(1.08)}.btn:active{transform:scale(.97)}
+.btn2{border:1.5px solid var(--pri);color:var(--pri);font-weight:600;border-radius:999px;padding:.65rem 1.4rem}
+.btn2:hover{background:var(--pri);color:var(--bg)}
+.pill{border:1px solid var(--bd);border-radius:999px;padding:.35rem .9rem;font-size:.85rem;min-height:36px}
+.pill.on{background:var(--pri);color:var(--bg);border-color:var(--pri)}
+.inp{width:100%;background:var(--bg);border:1px solid var(--bd);border-radius:.6rem;padding:.6rem .8rem;color:var(--tx)}
+.inp:focus,button:focus-visible,a:focus-visible{outline:2px solid var(--acc);outline-offset:2px}
+.img svg{width:62%;height:86%}.ico svg{width:72px;height:54px;margin:0 auto}.img{background:linear-gradient(135deg,#E8F0EA,#F8EBCF);display:flex;align-items:center;justify-content:center;font-size:3rem;overflow:hidden}
+.img img{width:100%;height:100%;object-fit:cover}
+.glass{backdrop-filter:blur(12px);background:color-mix(in srgb,var(--bg) 80%,transparent)}
+.modal{position:fixed;inset:0;z-index:70;background:rgba(0,0,0,.55);display:none;align-items:center;justify-content:center;padding:1rem}
+.modal.open{display:flex}
+#drawer{transition:transform .3s}.brand{display:flex;align-items:center;gap:.5rem;flex-shrink:0;white-space:nowrap}.brand svg{width:2.25rem;height:2.25rem;flex-shrink:0}.brand .bn{display:block;font-weight:700;font-size:1.125rem;line-height:1.1;color:var(--pri)}.brand .en{display:block;margin-top:3px;font-family:'Playfair Display',serif;font-size:10px;line-height:1;text-transform:uppercase;letter-spacing:.22em;color:var(--mu)}
+@media(max-width:400px){.brand svg{width:1.9rem;height:1.9rem}.brand .bn{font-size:1rem}.brand .en{font-size:8.5px;letter-spacing:.18em}}
+.hp{padding:.35rem .6rem}
+.hero{background:linear-gradient(135deg,#E8F0EA,#F8EBCF);display:grid;grid-template-columns:1fr 1fr;place-items:center;gap:.25rem;padding:1.25rem}.hero svg{width:100%;height:auto}
+#mdrawer{transform:translateX(100%);visibility:hidden;transition:transform .3s ease,visibility 0s .3s}#mdrawer.open{transform:none;visibility:visible;transition:transform .3s ease}
+#mov{opacity:0;pointer-events:none;transition:opacity .3s}#mov.open{opacity:1;pointer-events:auto}
+#mdrawer.open #mnav a{animation:sl .35s both}#mdrawer.open #mnav a:nth-child(2){animation-delay:.05s}#mdrawer.open #mnav a:nth-child(3){animation-delay:.1s}#mdrawer.open #mnav a:nth-child(4){animation-delay:.15s}#mdrawer.open #mnav a:nth-child(5){animation-delay:.2s}#mdrawer.open #mnav a:nth-child(6){animation-delay:.25s}
+@keyframes sl{from{opacity:0;transform:translateX(18px)}}
+@media(prefers-reduced-motion:reduce){#mdrawer.open #mnav a{animation:none}}
+#langBtn span.on{background:var(--pri);color:var(--bg)}#langBtn span:nth-child(2),#langBtn span:nth-child(4){border-left:1px solid var(--bd)}.fade{animation:fd .25s}@keyframes fd{from{opacity:0;transform:translateY(-6px)}}@media(prefers-reduced-motion:reduce){.fade{animation:none}}
+@media(prefers-reduced-motion:reduce){*{transition:none!important}}
+</style>
+</head>
+<body>
 
-    <header
-      class="glass sticky top-0 z-50 border-b"
-      style="border-color: var(--bd)"
-    >
-      <div
-        class="max-w-6xl mx-auto px-3 sm:px-4 h-16 flex items-center justify-between gap-2"
-      >
-        <a href="#top" class="brand"
-          ><svg><use href="#logo" /></svg
-          ><span
-            ><b class="bn">খাঁটি ঘর</b><span class="en">Khati Ghor</span></span
-          ></a
-        >
-        <nav
-          class="hidden md:flex gap-3 lg:gap-6 text-[13px] lg:text-sm font-medium whitespace-nowrap"
-        >
-          <a href="#products" data-i18n="n1"></a
-          ><a href="#guide" data-i18n="n2"></a
-          ><a href="#compare" data-i18n="n3"></a
-          ><a href="#reviews" data-i18n="n4"></a
-          ><a href="#faq" data-i18n="n5"></a
-          ><a href="#" data-track data-i18n="trk"></a>
-        </nav>
-        <div class="flex items-center gap-1.5 sm:gap-2">
-          <button
-            id="langBtn"
-            class="pill !p-0 overflow-hidden flex font-semibold text-[13px]"
-            aria-label="Language"
-          >
-            <span data-l="en" class="px-2.5 py-1.5 md:hidden">EN</span
-            ><span data-l="bn" class="px-2.5 py-1.5 md:hidden">বাং</span
-            ><span data-l="bn" class="px-2.5 py-1.5 hidden md:block">বাং</span
-            ><span data-l="en" class="px-2.5 py-1.5 hidden md:block">EN</span>
-          </button>
-          <button id="themeBtn" class="pill hp" aria-label="Theme">🌙</button>
-          <button id="cartBtn" class="pill hp relative" aria-label="Cart">
-            🛒<span
-              id="badge"
-              class="absolute -top-2 -right-2 text-[11px] text-white rounded-full w-5 h-5 flex items-center justify-center"
-              style="background: var(--acc)"
-              >0</span
-            >
-          </button>
-          <button
-            id="menuBtn"
-            class="pill hp md:hidden"
-            aria-label="Menu"
-            aria-controls="mdrawer"
-          >
-            ☰
-          </button>
-        </div>
-      </div>
-    </header>
-    <div id="mov" class="fixed inset-0 z-[64] bg-black/50 md:hidden"></div>
-    <aside
-      id="mdrawer"
-      class="card md:hidden fixed top-0 right-0 h-full w-72 max-w-[82%] z-[65] p-5 flex flex-col"
-      aria-label="Menu"
-    >
-      <div class="flex justify-between items-center">
-        <span class="brand"
-          ><svg><use href="#logo" /></svg
-          ><span
-            ><b class="bn">খাঁটি ঘর</b><span class="en">Khati Ghor</span></span
-          ></span
-        ><button id="mClose" class="pill hp" aria-label="Close">✕</button>
-      </div>
-      <nav id="mnav" class="mt-6 flex flex-col text-base font-medium">
-        <a
-          href="#products"
-          data-i18n="n1"
-          class="py-3.5 border-b"
-          style="border-color: var(--bd)"
-        ></a
-        ><a
-          href="#guide"
-          data-i18n="n2"
-          class="py-3.5 border-b"
-          style="border-color: var(--bd)"
-        ></a
-        ><a
-          href="#compare"
-          data-i18n="n3"
-          class="py-3.5 border-b"
-          style="border-color: var(--bd)"
-        ></a
-        ><a
-          href="#reviews"
-          data-i18n="n4"
-          class="py-3.5 border-b"
-          style="border-color: var(--bd)"
-        ></a
-        ><a
-          href="#faq"
-          data-i18n="n5"
-          class="py-3.5 border-b"
-          style="border-color: var(--bd)"
-        ></a
-        ><a href="#" data-track data-i18n="trk" class="py-3.5 acc"></a>
-      </nav>
-    </aside>
+<svg width="0" height="0" style="position:absolute"><symbol id="logo" viewBox="0 0 48 48"><path d="M8 30C8 15 20 7 38 6c0 16-8 28-24 28-2 0-4-1-6-4z" fill="#2D6A4F"/><path d="M12 32C18 24 25 18 33 12" stroke="#FAF8F5" stroke-width="1.8" fill="none" stroke-linecap="round"/><path d="M34 26c4 5 6 8 6 11a6 6 0 01-12 0c0-3 2-6 6-11z" fill="#D97706"/></symbol></svg>
 
-    <main id="top">
-      <section
-        class="max-w-6xl mx-auto px-4 py-12 md:py-20 grid md:grid-cols-2 gap-10 items-center"
-      >
-        <div>
-          <span
-            class="card inline-block rounded-full px-4 py-1.5 text-sm pri"
-            data-i18n="hBadge"
-          ></span>
-          <h1
-            class="text-4xl md:text-5xl font-bold leading-tight mt-5 pri"
-            data-i18n="hH"
-          ></h1>
-          <p class="mu mt-4 max-w-lg leading-relaxed" data-i18n="hS"></p>
-          <div class="flex flex-wrap gap-3 mt-7">
-            <a href="#products" class="btn" data-i18n="hC1"></a
-            ><a href="#guide" class="btn2" data-i18n="hC2"></a>
-          </div>
-        </div>
-        <div class="relative">
-          <div
-            id="heroArt"
-            class="hero rounded-3xl"
-            role="img"
-            aria-label="Honey, ghee, mustard oil and jaggery"
-          ></div>
-          <div
-            class="glass card absolute -bottom-4 left-4 rounded-2xl px-4 py-3 text-sm font-semibold shadow-lg"
-            data-i18n="hTrust"
-          ></div>
-        </div>
-      </section>
+<header class="glass sticky top-0 z-50 border-b" style="border-color:var(--bd)">
+<div class="max-w-6xl mx-auto px-3 sm:px-4 h-16 flex items-center justify-between gap-2">
+<a href="#top" class="brand"><svg><use href="#logo"/></svg><span><b class="bn">খাঁটি ঘর</b><span class="en">Khati Ghor</span></span></a>
+<nav class="hidden md:flex gap-3 lg:gap-6 text-[13px] lg:text-sm font-medium whitespace-nowrap">
+<a href="#products" data-i18n="n1"></a><a href="#guide" data-i18n="n2"></a><a href="#compare" data-i18n="n3"></a><a href="#reviews" data-i18n="n4"></a><a href="#faq" data-i18n="n5"></a><a href="#" data-track data-i18n="trk"></a></nav>
+<div class="flex items-center gap-1.5 sm:gap-2">
+<button id="langBtn" class="pill !p-0 overflow-hidden flex font-semibold text-[13px]" aria-label="Language"><span data-l="en" class="px-2.5 py-1.5 md:hidden">EN</span><span data-l="bn" class="px-2.5 py-1.5 md:hidden">বাং</span><span data-l="bn" class="px-2.5 py-1.5 hidden md:block">বাং</span><span data-l="en" class="px-2.5 py-1.5 hidden md:block">EN</span></button>
+<button id="themeBtn" class="pill hp" aria-label="Theme">🌙</button>
+<button id="cartBtn" class="pill hp relative" aria-label="Cart">🛒<span id="badge" class="absolute -top-2 -right-2 text-[11px] text-white rounded-full w-5 h-5 flex items-center justify-center" style="background:var(--acc)">0</span></button>
+<button id="menuBtn" class="pill hp md:hidden" aria-label="Menu" aria-controls="mdrawer">☰</button>
+</div></div>
+</header>
+<div id="mov" class="fixed inset-0 z-[64] bg-black/50 md:hidden"></div>
+<aside id="mdrawer" class="card md:hidden fixed top-0 right-0 h-full w-72 max-w-[82%] z-[65] p-5 flex flex-col" aria-label="Menu"><div class="flex justify-between items-center"><span class="brand"><svg><use href="#logo"/></svg><span><b class="bn">খাঁটি ঘর</b><span class="en">Khati Ghor</span></span></span><button id="mClose" class="pill hp" aria-label="Close">✕</button></div><nav id="mnav" class="mt-6 flex flex-col text-base font-medium"><a href="#products" data-i18n="n1" class="py-3.5 border-b" style="border-color:var(--bd)"></a><a href="#guide" data-i18n="n2" class="py-3.5 border-b" style="border-color:var(--bd)"></a><a href="#compare" data-i18n="n3" class="py-3.5 border-b" style="border-color:var(--bd)"></a><a href="#reviews" data-i18n="n4" class="py-3.5 border-b" style="border-color:var(--bd)"></a><a href="#faq" data-i18n="n5" class="py-3.5 border-b" style="border-color:var(--bd)"></a><a href="#" data-track data-i18n="trk" class="py-3.5 acc"></a></nav></aside>
 
-      <section class="max-w-6xl mx-auto px-4 py-12">
-        <h2
-          class="serif text-3xl font-bold text-center pri"
-          data-i18n="whyT"
-        ></h2>
-        <div
-          id="pillars"
-          class="grid sm:grid-cols-2 lg:grid-cols-4 gap-4 mt-8"
-        ></div>
-      </section>
+<main id="top">
+<section class="max-w-6xl mx-auto px-4 py-12 md:py-20 grid md:grid-cols-2 gap-10 items-center">
+<div>
+<span class="card inline-block rounded-full px-4 py-1.5 text-sm pri" data-i18n="hBadge"></span>
+<h1 class="text-4xl md:text-5xl font-bold leading-tight mt-5 pri" data-i18n="hH"></h1>
+<p class="mu mt-4 max-w-lg leading-relaxed" data-i18n="hS"></p>
+<div class="flex flex-wrap gap-3 mt-7"><a href="#products" class="btn" data-i18n="hC1"></a><a href="#guide" class="btn2" data-i18n="hC2"></a></div>
+</div>
+<div class="relative"><div id="heroArt" class="hero rounded-3xl" role="img" aria-label="Honey, ghee, mustard oil and jaggery"></div>
+<div class="glass card absolute -bottom-4 left-4 rounded-2xl px-4 py-3 text-sm font-semibold shadow-lg" data-i18n="hTrust"></div></div>
+</section>
 
-      <section id="products" class="max-w-6xl mx-auto px-4 py-12">
-        <h2
-          class="serif text-3xl font-bold text-center pri"
-          data-i18n="n1"
-        ></h2>
-        <div
-          id="grid"
-          class="grid sm:grid-cols-2 lg:grid-cols-4 gap-5 mt-8"
-        ></div>
-      </section>
+<section class="max-w-6xl mx-auto px-4 py-12">
+<h2 class="serif text-3xl font-bold text-center pri" data-i18n="whyT"></h2>
+<div id="pillars" class="grid sm:grid-cols-2 lg:grid-cols-4 gap-4 mt-8"></div>
+</section>
 
-      <section class="max-w-4xl mx-auto px-4 py-6">
-        <div
-          class="card rounded-2xl p-5 md:p-6 flex flex-col md:flex-row gap-4 md:items-center"
-        >
-          <p class="text-sm md:flex-1 leading-relaxed" data-i18n="cbT"></p>
-          <div class="md:w-80">
-            <div class="flex gap-2">
-              <input
-                id="cbPh"
-                class="inp"
-                inputmode="tel"
-                data-ph="cbPh"
-              /><button
-                id="cbBtn"
-                class="btn !px-3 text-sm whitespace-nowrap"
-                data-i18n="cbBtn"
-              ></button>
-            </div>
-            <p id="cbMsg" class="text-xs mt-1.5 min-h-[1rem]"></p>
-          </div>
-        </div>
-      </section>
-      <section class="max-w-6xl mx-auto px-4 py-6">
-        <div
-          class="rounded-3xl p-8 md:p-10 text-white grid md:grid-cols-2 gap-6 items-center"
-          style="background: linear-gradient(120deg, #0b2a1e, #1b4332)"
-        >
-          <div>
-            <h2
-              class="text-2xl md:text-3xl font-bold"
-              style="color: #fbbf24"
-              data-i18n="cT"
-            ></h2>
-            <p class="mt-3 opacity-90" data-i18n="cD"></p>
-          </div>
-          <div class="md:text-right">
-            <span class="line-through opacity-60 text-lg" id="cOld"></span>
-            <b class="text-4xl" style="color: #fbbf24" id="cNew"></b>
-            <div
-              class="inline-block mt-2 rounded-full px-3 py-1 text-sm font-semibold"
-              style="background: #fbbf24; color: #1c1917"
-              data-i18n="cB"
-            ></div>
-            <div>
-              <button id="addCombo" class="btn mt-4" data-i18n="cBtn"></button>
-            </div>
-          </div>
-        </div>
-      </section>
+<section id="products" class="max-w-6xl mx-auto px-4 py-12">
+<h2 class="serif text-3xl font-bold text-center pri" data-i18n="n1"></h2>
+<div id="grid" class="grid sm:grid-cols-2 lg:grid-cols-4 gap-5 mt-8"></div>
+</section>
 
-      <section class="max-w-6xl mx-auto px-4 py-12">
-        <h2
-          class="serif text-3xl font-bold text-center pri"
-          data-i18n="sT"
-        ></h2>
-        <div
-          id="sources"
-          class="grid grid-cols-2 lg:grid-cols-4 gap-4 mt-8"
-        ></div>
-      </section>
+<section class="max-w-4xl mx-auto px-4 py-6"><div class="card rounded-2xl p-5 md:p-6 flex flex-col md:flex-row gap-4 md:items-center"><p class="text-sm md:flex-1 leading-relaxed" data-i18n="cbT"></p><div class="md:w-80"><div class="flex gap-2"><input id="cbPh" class="inp" inputmode="tel" data-ph="cbPh"><button id="cbBtn" class="btn !px-3 text-sm whitespace-nowrap" data-i18n="cbBtn"></button></div><p id="cbMsg" class="text-xs mt-1.5 min-h-[1rem]"></p></div></div></section>
+<section class="max-w-6xl mx-auto px-4 py-6">
+<div class="rounded-3xl p-8 md:p-10 text-white grid md:grid-cols-2 gap-6 items-center" style="background:linear-gradient(120deg,#0B2A1E,#1B4332)">
+<div><h2 class="text-2xl md:text-3xl font-bold" style="color:#FBBF24" data-i18n="cT"></h2><p class="mt-3 opacity-90" data-i18n="cD"></p></div>
+<div class="md:text-right"><span class="line-through opacity-60 text-lg" id="cOld"></span> <b class="text-4xl" style="color:#FBBF24" id="cNew"></b>
+<div class="inline-block mt-2 rounded-full px-3 py-1 text-sm font-semibold" style="background:#FBBF24;color:#1C1917" data-i18n="cB"></div>
+<div><button id="addCombo" class="btn mt-4" data-i18n="cBtn"></button></div></div></div>
+</section>
 
-      <section id="compare" class="max-w-4xl mx-auto px-4 py-12">
-        <h2
-          class="serif text-3xl font-bold text-center pri"
-          data-i18n="n3"
-        ></h2>
-        <div class="card rounded-2xl mt-8 overflow-x-auto">
-          <table class="w-full text-sm min-w-[560px]">
-            <thead>
-              <tr class="text-left">
-                <th class="p-4"></th>
-                <th class="p-4 pri" data-i18n="cmpA"></th>
-                <th class="p-4" style="color: #dc2626" data-i18n="cmpB"></th>
-              </tr>
-            </thead>
-            <tbody id="cmp"></tbody>
-          </table>
-        </div>
-      </section>
+<section class="max-w-6xl mx-auto px-4 py-12">
+<h2 class="serif text-3xl font-bold text-center pri" data-i18n="sT"></h2>
+<div id="sources" class="grid grid-cols-2 lg:grid-cols-4 gap-4 mt-8"></div>
+</section>
 
-      <section id="guide" class="max-w-4xl mx-auto px-4 py-12">
-        <h2
-          class="serif text-3xl font-bold text-center pri"
-          data-i18n="gT"
-        ></h2>
-        <div id="tabs" class="flex flex-wrap justify-center gap-2 mt-6"></div>
-        <div id="tabBody" class="card rounded-2xl p-6 mt-5"></div>
-      </section>
+<section id="compare" class="max-w-4xl mx-auto px-4 py-12">
+<h2 class="serif text-3xl font-bold text-center pri" data-i18n="n3"></h2>
+<div class="card rounded-2xl mt-8 overflow-x-auto"><table class="w-full text-sm min-w-[560px]"><thead><tr class="text-left"><th class="p-4"></th><th class="p-4 pri" data-i18n="cmpA"></th><th class="p-4" style="color:#DC2626" data-i18n="cmpB"></th></tr></thead><tbody id="cmp"></tbody></table></div>
+</section>
 
-      <section id="reviews" class="max-w-6xl mx-auto px-4 py-12">
-        <h2
-          class="serif text-3xl font-bold text-center pri"
-          data-i18n="n4"
-        ></h2>
-        <div id="revs" class="grid md:grid-cols-3 gap-4 mt-8"></div>
-      </section>
+<section id="guide" class="max-w-4xl mx-auto px-4 py-12">
+<h2 class="serif text-3xl font-bold text-center pri" data-i18n="gT"></h2>
+<div id="tabs" class="flex flex-wrap justify-center gap-2 mt-6"></div>
+<div id="tabBody" class="card rounded-2xl p-6 mt-5"></div>
+</section>
 
-      <section id="faq" class="max-w-3xl mx-auto px-4 py-12">
-        <h2
-          class="serif text-3xl font-bold text-center pri"
-          data-i18n="n5"
-        ></h2>
-        <div id="faqs" class="mt-8 space-y-3"></div>
-      </section>
-    </main>
+<section id="reviews" class="max-w-6xl mx-auto px-4 py-12">
+<h2 class="serif text-3xl font-bold text-center pri" data-i18n="n4"></h2>
+<div id="revs" class="grid md:grid-cols-3 gap-4 mt-8"></div>
+</section>
 
-    <footer class="border-t mt-8 pb-20 md:pb-0" style="border-color: var(--bd)">
-      <div
-        class="max-w-6xl mx-auto px-4 py-10 grid md:grid-cols-2 gap-6 text-sm"
-      >
-        <div>
-          <div class="brand">
-            <svg><use href="#logo" /></svg
-            ><span
-              ><b class="bn">খাঁটি ঘর</b
-              ><span class="en">Khati Ghor</span></span
-            >
-          </div>
-          <p class="mu mt-3 max-w-sm" data-i18n="fM"></p>
-        </div>
-        <ul class="space-y-2 mu">
-          <li data-i18n="fPh"></li>
-          <li data-i18n="fAd"></li>
-          <li data-i18n="fHr"></li>
-          <li><a href="#" data-track data-i18n="trk" class="acc"></a></li>
-          <li>
-            <a
-              href="https://facebook.com/khatighorbd"
-              target="_blank"
-              rel="noopener"
-              class="acc"
-              >facebook.com/khatighorbd</a
-            >
-          </li>
-        </ul>
-      </div>
-    </footer>
+<section id="faq" class="max-w-3xl mx-auto px-4 py-12">
+<h2 class="serif text-3xl font-bold text-center pri" data-i18n="n5"></h2>
+<div id="faqs" class="mt-8 space-y-3"></div>
+</section>
+</main>
 
-    <nav
-      class="glass md:hidden fixed bottom-0 inset-x-0 z-40 border-t grid grid-cols-3 text-xs font-medium"
-      style="border-color: var(--bd)"
-    >
-      <a href="tel:+8801711000000" class="flex flex-col items-center py-2"
-        ><span class="text-xl">📞</span><span data-i18n="call"></span
-      ></a>
-      <a
-        href="https://wa.me/8801711000000"
-        target="_blank"
-        rel="noopener"
-        class="flex flex-col items-center py-2"
-        ><span class="text-xl">💬</span><span data-i18n="waB"></span
-      ></a>
-      <button id="floatCart" class="flex flex-col items-center py-2 relative">
-        <span class="text-xl">🛒</span
-        ><span
-          ><span data-i18n="cartL"></span>
-          <b id="floatSub" class="acc"></b></span
-        ><span
-          id="floatN"
-          class="absolute top-0.5 right-[22%] text-[10px] text-white rounded-full min-w-[18px] h-[18px] flex items-center justify-center"
-          style="background: var(--acc)"
-          >0</span
-        >
-      </button>
-    </nav>
-    <div
-      id="toast"
-      class="fixed bottom-20 md:bottom-6 left-1/2 -translate-x-1/2 z-[90] px-5 py-2 rounded-full text-white text-sm shadow-lg opacity-0 pointer-events-none transition-opacity"
-      style="background: var(--pri)"
-    ></div>
+<footer class="border-t mt-8 pb-20 md:pb-0" style="border-color:var(--bd)"><div class="max-w-6xl mx-auto px-4 py-10 grid md:grid-cols-2 gap-6 text-sm">
+<div><div class="brand"><svg><use href="#logo"/></svg><span><b class="bn">খাঁটি ঘর</b><span class="en">Khati Ghor</span></span></div><p class="mu mt-3 max-w-sm" data-i18n="fM"></p></div>
+<ul class="space-y-2 mu"><li data-i18n="fPh"></li><li data-i18n="fAd"></li><li data-i18n="fHr"></li><li><a href="#" data-track data-i18n="trk" class="acc"></a></li><li><a href="https://facebook.com/khatighorbd" target="_blank" rel="noopener" class="acc">facebook.com/khatighorbd</a></li></ul>
+</div></footer>
 
-    <!-- Quick view -->
-    <div id="qv" class="modal">
-      <div
-        class="card rounded-2xl p-6 max-w-md w-full max-h-[90vh] overflow-y-auto"
-        id="qvBody"
-      ></div>
-    </div>
-    <!-- Order modal -->
-    <div id="om" class="modal">
-      <div
-        class="card rounded-2xl p-6 max-w-md w-full max-h-[90vh] overflow-y-auto"
-        id="omBody"
-      ></div>
-    </div>
-    <div id="tm" class="modal">
-      <div
-        class="card rounded-2xl p-6 max-w-md w-full max-h-[90vh] overflow-y-auto"
-        id="tmBody"
-      ></div>
-    </div>
+<nav class="glass md:hidden fixed bottom-0 inset-x-0 z-40 border-t grid grid-cols-3 text-xs font-medium" style="border-color:var(--bd)">
+<a href="tel:+8801711000000" class="flex flex-col items-center py-2"><span class="text-xl">📞</span><span data-i18n="call"></span></a>
+<a href="https://wa.me/8801711000000" target="_blank" rel="noopener" class="flex flex-col items-center py-2"><span class="text-xl">💬</span><span data-i18n="waB"></span></a>
+<button id="floatCart" class="flex flex-col items-center py-2 relative"><span class="text-xl">🛒</span><span><span data-i18n="cartL"></span> <b id="floatSub" class="acc"></b></span><span id="floatN" class="absolute top-0.5 right-[22%] text-[10px] text-white rounded-full min-w-[18px] h-[18px] flex items-center justify-center" style="background:var(--acc)">0</span></button></nav>
+<div id="toast" class="fixed bottom-20 md:bottom-6 left-1/2 -translate-x-1/2 z-[90] px-5 py-2 rounded-full text-white text-sm shadow-lg opacity-0 pointer-events-none transition-opacity" style="background:var(--pri)"></div>
 
-    <!-- Cart drawer -->
-    <div id="ov" class="fixed inset-0 z-[55] bg-black/50 hidden"></div>
-    <aside
-      id="drawer"
-      class="card fixed top-0 right-0 h-full w-full max-w-md z-[60] translate-x-full overflow-y-auto p-5"
-    >
-      <div class="flex justify-between items-center">
-        <h3 class="text-xl font-bold pri" data-i18n="cartT"></h3>
-        <button id="closeCart" class="pill" aria-label="Close">✕</button>
-      </div>
-      <div id="items" class="mt-4 space-y-3"></div>
-      <div id="co" class="hidden mt-5 space-y-4">
-        <div>
-          <div class="text-sm font-medium" id="fdTxt"></div>
-          <div class="h-2 rounded-full mt-1.5" style="background: var(--bd)">
-            <div
-              id="fdBar"
-              class="h-2 rounded-full"
-              style="background: var(--acc); width: 0"
-            ></div>
-          </div>
-        </div>
-        <div>
-          <div class="flex gap-2">
-            <input id="coupon" class="inp" data-ph="cpPh" /><button
-              id="applyCp"
-              class="btn2"
-              data-i18n="apply"
-            ></button>
-          </div>
-          <p id="cpMsg" class="text-xs mt-1 mu" data-i18n="cpHint"></p>
-        </div>
-        <div class="space-y-2.5">
-          <input id="fName" class="inp" data-ph="fName" /><input
-            id="fPhone"
-            class="inp"
-            inputmode="tel"
-            data-ph="fPhone"
-          /><textarea
-            id="fAddr"
-            rows="2"
-            class="inp"
-            data-ph="fAddr"
-          ></textarea>
-          <select id="zone" class="inp">
-            <option value="70" data-i18n="z1"></option>
-            <option value="130" data-i18n="z2"></option>
-          </select>
-          <p id="eta" class="text-xs acc font-medium"></p>
-          <label class="flex items-center gap-2 text-sm"
-            ><input type="checkbox" id="gift" class="w-4 h-4" /><span
-              data-i18n="gift"
-            ></span
-          ></label>
-          <div id="giftBox" class="hidden space-y-2.5">
-            <label class="flex items-center gap-2 text-sm"
-              ><input type="checkbox" id="hidePrice" class="w-4 h-4" /><span
-                data-i18n="hideP"
-              ></span></label
-            ><textarea id="gMsg" rows="2" class="inp" data-ph="gMsg"></textarea>
-          </div>
-        </div>
-        <div class="grid grid-cols-3 gap-2 text-sm" id="pays"></div>
-        <div id="payBox" class="hidden card rounded-xl p-3 text-sm space-y-2">
-          <p><span data-i18n="mer"></span> <b>01711-000000</b></p>
-          <input id="trx" class="inp" data-ph="trx" />
-        </div>
-        <div class="card rounded-xl p-4 text-sm space-y-1.5" id="sum"></div>
-        <button
-          id="confirm"
-          class="btn w-full text-lg"
-          data-i18n="confirm"
-        ></button>
-      </div>
-    </aside>
+<!-- Quick view -->
+<div id="qv" class="modal"><div class="card rounded-2xl p-6 max-w-md w-full max-h-[90vh] overflow-y-auto" id="qvBody"></div></div>
+<!-- Order modal -->
+<div id="om" class="modal"><div class="card rounded-2xl p-6 max-w-md w-full max-h-[90vh] overflow-y-auto" id="omBody"></div></div>
+<div id="tm" class="modal"><div class="card rounded-2xl p-6 max-w-md w-full max-h-[90vh] overflow-y-auto" id="tmBody"></div></div>
 
-    <script>
-      const $ = (s) => document.querySelector(s),
-        $$ = (s) => [...document.querySelectorAll(s)];
-      let lang = localStorage.getItem("kg_lang") || "bn",
-        dark = localStorage.getItem("kg_theme") === "dark";
-      let cart = [],
-        coupon = false,
-        pay = "cod",
-        tab = 0;
-      const COMBO = 1530,
-        COMBO_OLD = 1880;
-      const T = {
-        bn: {
-          n1: "পণ্যসমূহ",
-          trk: "ট্র্যাক অর্ডার",
-          trT: "অর্ডার ট্র্যাক করুন",
-          trBtn: "ট্র্যাক করুন",
-          trDemo: "ডেমো আইডি:",
-          trBad: "এই অর্ডার আইডি পাওয়া যায়নি। আইডিটি আবার দেখে লিখুন।",
-          trDate: "অর্ডারের তারিখ",
-          trAreaL: "এলাকা",
-          trArea: ["ঢাকার ভেতরে", "ঢাকার বাইরে"],
-          trSteps: [
-            "অর্ডার গৃহীত",
-            "প্যাকিং চলছে",
-            "কুরিয়ারে হস্তান্তর",
-            "ডেলিভারি সম্পন্ন",
-          ],
-          cbT: "ফর্ম পূরণ করতে ঝামেলা মনে হচ্ছে? শুধু মোবাইল নম্বর দিন, আমাদের প্রতিনিধি ১৫ মিনিটের মধ্যে কল করে অর্ডার নেবেন।",
-          cbBtn: "কল রিকোয়েস্ট পাঠান",
-          cbPh: "মোবাইল নম্বর (১১ ডিজিট)",
-          cbOk: "ধন্যবাদ! আপনার অনুরোধ পাঠানো হয়েছে। ১৫ মিনিটের মধ্যে আমরা কল করব।",
-          cbBad: "সঠিক ১১ ডিজিটের মোবাইল নম্বর দিন।",
-          eta: "সম্ভাব্য ডেলিভারি: ",
-          gift: "উপহার হিসেবে পাঠাতে চান?",
-          hideP: "রসিদে পণ্যের দাম গোপন রাখুন",
-          gMsg: "প্রিয়জনের জন্য শুভেচ্ছাবার্তা",
-          giftYes: "উপহার হিসেবে পাঠানো হবে",
-          call: "কল করুন",
-          waB: "হোয়াটসঅ্যাপ",
-          cartL: "কার্ট",
-          U: [
-            [
-              "৪ জনের পরিবারে প্রায় ৩-৪ সপ্তাহ চলবে",
-              "৪ জনের পরিবারে প্রায় ১.৫ - ২ মাস চলবে",
-            ],
-            [
-              "পরিবারের জন্য প্রায় ৩ সপ্তাহ চলবে",
-              "৪ জনের পরিবারে প্রায় ১.৫ মাস চলবে",
-            ],
-            [
-              "নিয়মিত রান্নায় প্রায় ২-৩ সপ্তাহ",
-              "পরিবারের পুরো মাসের জন্য সেরা",
-            ],
-            [
-              "পিঠা ও পায়েসের জন্য ২-৩ বার",
-              "পুরো পরিবারের শীতের আয়োজনের জন্য",
-            ],
-            [
-              "পরিবারের জন্য প্রায় ৩ সপ্তাহ চলবে",
-              "৪ জনের পরিবারে প্রায় ১.৫ - ২ মাস চলবে",
-            ],
-            ["নিয়মিত ব্যবহারে প্রায় ২ সপ্তাহ", "পরিবারের জন্য প্রায় ১ মাস"],
-            ["শিশুদের নাস্তায় ১-২ সপ্তাহ", "পরিবারের জন্য প্রায় ১ মাস"],
-            [
-              "৪ জনের পরিবারে প্রায় ১ সপ্তাহ",
-              "পরিবারের জন্য প্রায় ২ - ৩ সপ্তাহ",
-            ],
-          ],
-          n2: "বিশুদ্ধতা",
-          n3: "তুলনা",
-          n4: "রিভিউ",
-          n5: "প্রশ্নোত্তর",
-          hBadge:
-            "🌿 ১০০% কেমিক্যাল ও ভেজালমুক্ত | সরাসরি গ্রামবাংলা থেকে সংগৃহীত",
-          hH: "প্রকৃতির আসল স্বাদ, সরাসরি আপনার ঘরে",
-          hS: "সুন্দরবনের খাঁটি মধু, পাবনার গাওয়া ঘি ও কাঠের ঘানি ভাঙা সরিষার তেল। ডেলিভারি ম্যানের সামনে টেস্ট করে টাকা দেওয়ার গ্যারান্টি।",
-          hC1: "পণ্য দেখুন",
-          hC2: "আসল চেনার উপায়",
-          hTrust: "★ ৪.৯/৫ | ৫,০০০+ সন্তুষ্ট পরিবার",
-          whyT: "কেন খাঁটি ঘর?",
-          pil: [
-            [
-              "🧪",
-              "ল্যাব টেস্টেড ও ১০০% বিশুদ্ধ",
-              "কোনো চিনি, রং বা প্রিজারভেটিভ নেই।",
-            ],
-            [
-              "👅",
-              "টেস্ট করে নেওয়ার সুযোগ",
-              "ডেলিভারি ম্যানের সামনে স্বাদ ও ঘ্রাণ দেখে টাকা দেওয়ার নিশ্চয়তা।",
-            ],
-            [
-              "📦",
-              "নিরাপদ প্যাকেজিং ও ফ্রি রিপ্লেসমেন্ট",
-              "৩-লেয়ার বাবল র‍্যাপ ও ফুড-গ্রেড কাঁচের জার। ডেলিভারিতে ভাঙা বা লিক থাকলে ১০০% ফ্রি রিপ্লেসমেন্ট।",
-            ],
-            [
-              "💵",
-              "অগ্রিম টাকা ছাড়াই অর্ডার",
-              "সারা বাংলাদেশে ক্যাশ অন ডেলিভারি।",
-            ],
-          ],
-          batch: "নতুন ব্যাচ: নভেম্বর ২০২৬",
-          src: "উৎস",
-          det: "বিস্তারিত",
-          add: "কার্টে যোগ করুন",
-          added: "কার্টে যোগ হয়েছে ✓",
-          cT: "ফ্যামিলি বিশুদ্ধতা কম্বো প্যাক",
-          cD: "সুন্দরবনের মধু (৫০০ গ্রাম) + পাবনার গাওয়া ঘি (৫০০ গ্রাম) + সরিষার তেল (১ লিটার)",
-          cB: "৳৩৫০ সাশ্রয় + সারা দেশে ফ্রি ডেলিভারি!",
-          cBtn: "কম্বো কার্টে যোগ করুন",
-          comboName: "ফ্যামিলি বিশুদ্ধতা কম্বো প্যাক",
-          sT: "আমাদের সংগ্রহের উৎস",
-          cmpA: "খাঁটি ঘর",
-          cmpB: "সাধারণ বাজারের পণ্য",
-          cmp: [
-            ["প্রক্রিয়াকরণ", "কাঁচা ও কাঠের ঘানি", "কেমিক্যাল রিফাইন্ড"],
-            [
-              "বিশুদ্ধতা",
-              "১০০% চিনি ও প্রিজারভেটিভ মুক্ত",
-              "ফ্লেভার ও ভেজালের ঝুঁকি",
-            ],
-            [
-              "তাজা মান",
-              "তাজা ব্যাচ ও সংগ্রহের তারিখযুক্ত",
-              "দীর্ঘদিন স্টোরে জমা",
-            ],
-            [
-              "নিশ্চয়তা",
-              "টেস্ট করে নেওয়ার সুযোগ ও ফ্রি রিপ্লেসমেন্ট",
-              "কোনো গ্যারান্টি নেই",
-            ],
-          ],
-          gT: "ঘরে বসে আসল পণ্য চেনার উপায়",
-          cert: "BSTI ও ল্যাব টেস্টেড বিশুদ্ধতার সনদ",
-          tabs: [
-            [
-              "মধু পরীক্ষা",
-              [
-                "এক গ্লাস পানিতে এক চামচ মধু দিন; আসল মধু না গুলে তলায় জমে যাবে।",
-                "সুতির কাপড়ে এক ফোঁটা মধু ফেলুন; আসল মধু কাপড়ে ছড়িয়ে ভিজবে না।",
-                "আসল মধুতে হালকা ফুলের ঘ্রাণ থাকে, কৃত্রিম গন্ধ নয়।",
-              ],
-            ],
-            [
-              "ঘি পরীক্ষা",
-              [
-                "এক চামচ ঘি হাতের তালুতে নিন; আসল ঘি শরীরের তাপে দ্রুত গলে যাবে।",
-                "গরম করলে দানাদার সুগন্ধ ছড়াবে ও পরিষ্কার সোনালি তরল হবে।",
-                "ফ্রিজে রাখলে সমানভাবে দানা বেঁধে জমবে, আলাদা স্তর হবে না।",
-              ],
-            ],
-            [
-              "সরিষার তেল পরীক্ষা",
-              [
-                "তেলে ঝাঁঝালো সরিষার ঘ্রাণ থাকবে; ঘ্রাণ ফ্যাকাসে হলে সন্দেহ করুন।",
-                "এক ফোঁটা তেল জিভে দিলে হালকা ঝাঁঝ লাগবে, তিতকুটে স্বাদ নয়।",
-                "ফ্রিজে রাখলে আসল তেল ঘন হয়, কিন্তু স্বচ্ছ থাকে।",
-              ],
-            ],
-          ],
-          revs: [
-            [
-              "রাফিয়া আক্তার",
-              "ঢাকা",
-              "কাঁচের জারটা ৩ লেয়ার র‍্যাপে এসেছে, একটুও লিক হয়নি। মধুর ঘ্রাণ একদম আসল।",
-            ],
-            [
-              "তানভীর হোসেন",
-              "চট্টগ্রাম",
-              "চট্টগ্রামে ৩ দিনে পৌঁছেছে। ঘি-এর সুগন্ধ আমার ছোটবেলার কথা মনে করিয়ে দিল।",
-            ],
-            [
-              "সুমাইয়া ইসলাম",
-              "সিলেট",
-              "ডেলিভারি ম্যানের সামনে টেস্ট করে নিলাম। সরিষার তেলের ঝাঁঝ খাঁটি, প্যাকেজিংও নিরাপদ।",
-            ],
-          ],
-          faq: [
-            [
-              "শীতে মধু জমে গেলে কি সেটি ভেজাল?",
-              "না। খাঁটি মধুর গ্লুকোজ ঠান্ডায় স্বাভাবিকভাবে দানা বাঁধে। জারটি কুসুম গরম পানিতে কিছুক্ষণ রাখলে আবার তরল হয়ে যাবে।",
-            ],
-            [
-              "কুরিয়ারে কাঁচের জার ভেঙে গেলে কী হবে?",
-              "১০০% ফ্রি রিপ্লেসমেন্ট। ডেলিভারির সময় ভাঙা বা লিক থাকলে আমাদের জানান, নতুন পণ্য পাঠিয়ে দেব।",
-            ],
-            [
-              "অর্ডার করতে কি অগ্রিম টাকা দিতে হবে?",
-              "না। সারা বাংলাদেশে সম্পূর্ণ ক্যাশ অন ডেলিভারি।",
-            ],
-            [
-              "ডেলিভারি চার্জ ও সময় কত?",
-              "ঢাকায় ৳৭০ (২৪-৪৮ ঘণ্টা), ঢাকার বাইরে ৳১৩০ (২-৪ দিন)। ৳১,৫০০-এর বেশি অর্ডার বা কম্বো প্যাকে ডেলিভারি ফ্রি।",
-            ],
-          ],
-          fM: "গ্রামবাংলার খাঁটি পণ্য, সরাসরি কৃষকের কাছ থেকে আপনার ঘরে।",
-          fPh: "ফোন / হোয়াটসঅ্যাপ: +880 1711-000000",
-          fAd: "ঠিকানা: বাড়ি নং-১৮, রোড-০৪, ধানমন্ডি, ঢাকা-১২০৯",
-          fHr: "সময়সূচী: প্রতিদিন সকাল ৯টা থেকে রাত ১০টা",
-          cartT: "আপনার কার্ট",
-          empty: "কার্ট খালি। পছন্দের পণ্য যোগ করুন।",
-          fdMore: (x) => `আরও ${x} যোগ করলেই ডেলিভারি ফ্রি!`,
-          fdOk: "ফ্রি ডেলিভারি আনলকড! 🎉",
-          cpPh: "কুপন কোড",
-          apply: "প্রয়োগ",
-          cpHint: "১০% ছাড়ের জন্য কুপন ব্যবহার করুন: KHATI10",
-          cpOk: "কুপন প্রয়োগ হয়েছে: ১০% ছাড়!",
-          cpBad: "কুপন কোডটি সঠিক নয়।",
-          fName: "কাস্টমারের নাম *",
-          fPhone: "মোবাইল নম্বর *",
-          fAddr: "সম্পূর্ণ ঠিকানা *",
-          z1: "ঢাকার ভেতরে ৳৭০",
-          z2: "ঢাকার বাইরে ৳১৩০",
-          cod: "ক্যাশ অন ডেলিভারি",
-          bk: "বিকাশ",
-          ng: "নগদ",
-          mer: "মার্চেন্ট নম্বর (সেন্ড মানি):",
-          trx: "ট্রানজেকশন আইডি (TrxID) *",
-          sub: "সাবটোটাল",
-          dis: "ডিসকাউন্ট",
-          del: "ডেলিভারি চার্জ",
-          tot: "সর্বমোট",
-          free: "৳০ (ফ্রি)",
-          confirm: "অর্ডার কনফার্ম করুন",
-          eName: "আপনার নাম লিখুন।",
-          ePhone: "সঠিক মোবাইল নম্বর দিন (যেমন: 01711000000)।",
-          eAddr: "ঠিকানা লিখুন।",
-          eTrx: "TrxID দিন।",
-          oT: "অর্ডার সফল হয়েছে! 🎉",
-          oId: "অর্ডার আইডি",
-          oSub: "আমরা শীঘ্রই আপনার সাথে যোগাযোগ করব।",
-          wa: "WhatsApp-এ অর্ডার রসিদ পাঠান",
-          close: "বন্ধ করুন",
-          qv: { b: "পুষ্টিগুণ", s: "সংরক্ষণ নির্দেশিকা", o: "উৎস", d: "ব্যাচ" },
-          P: [
-            {
-              n: "সুন্দরবনের খাঁটি মধু",
-              s: "সুন্দরবন",
-              t: "১ বছরের বেশি শিশুদের জন্য নিরাপদ",
-              b: "অ্যান্টিঅক্সিডেন্ট ও প্রাকৃতিক এনজাইমে ভরপুর; গলা ও রোগ প্রতিরোধে সহায়ক।",
-              st: "ঠান্ডা ও শুকনো স্থানে রাখুন। শীতে খাঁটি মধু স্বাভাবিকভাবে দানা বাঁধে, এটি ভেজাল নয়। ১ বছরের কম বয়সী শিশুকে মধু দেবেন না।",
-            },
-            {
-              n: "পাবনার খাঁটি গাওয়া ঘি",
-              s: "পাবনা",
-              t: "১০০% ভেজালমুক্ত",
-              b: "ভিটামিন A, D, E ও স্বাস্থ্যকর ফ্যাটের উৎস; হজমে সহায়ক।",
-              st: "শুকনো চামচ ব্যবহার করুন। ঘরের তাপমাত্রায় ২-৩ মাস, ফ্রিজে আরও বেশি দিন ভালো থাকে।",
-            },
-            {
-              n: "কাঠের ঘানি ভাঙা সরিষার তেল",
-              s: "বগুড়া",
-              t: "কাঠের ঘানি",
-              b: "কোল্ড-প্রেসড হওয়ায় প্রাকৃতিক পুষ্টি ও ঝাঁঝ অটুট থাকে।",
-              st: "সরাসরি রোদ থেকে দূরে, ঢাকনা বন্ধ করে রাখুন।",
-            },
-            {
-              n: "যশোরের খেজুরের পাটালি গুড়",
-              s: "যশোর",
-              t: "রিফাইন্ড চিনিমুক্ত",
-              b: "আয়রন ও খনিজে সমৃদ্ধ প্রাকৃতিক মিষ্টি।",
-              st: "বায়ুরোধী পাত্রে শুকনো স্থানে রাখুন।",
-            },
-            {
-              n: "দিনাজপুরের লিচু ফুলের মধু",
-              s: "দিনাজপুর",
-              t: "প্রাকৃতিক ফুলের মধু",
-              b: "হালকা ফুলের সুবাস ও মিষ্টি স্বাদ; অ্যান্টিঅক্সিডেন্টসমৃদ্ধ প্রাকৃতিক মিষ্টি।",
-              st: "ঠান্ডা ও শুকনো স্থানে রাখুন। শীতে দানা বাঁধা স্বাভাবিক। ১ বছরের কম বয়সী শিশুকে মধু দেবেন না।",
-            },
-            {
-              n: "কাঠের ঘানি নারকেল তেল",
-              s: "বরিশাল",
-              t: "কাঠের ঘানি",
-              b: "রান্না, চুল ও ত্বকের যত্নে ব্যবহার করা যায়; প্রাকৃতিক গন্ধ অটুট থাকে।",
-              st: "ঠান্ডা স্থানে রাখুন। শীতে জমে যাওয়া স্বাভাবিক, কুসুম গরম পানিতে রাখলে গলে যায়।",
-            },
-            {
-              n: "রাজশাহীর আমসত্ত্ব",
-              s: "রাজশাহী",
-              t: "প্রিজারভেটিভমুক্ত",
-              b: "আমের প্রাকৃতিক স্বাদ ও ফাইবারে ভরপুর; শিশুদের জন্য মুখরোচক নাস্তা।",
-              st: "বায়ুরোধী কৌটায় শুকনো স্থানে রাখুন।",
-            },
-            {
-              n: "ঠাকুরগাঁওয়ের চিনিগুঁড়া চাল",
-              s: "ঠাকুরগাঁও",
-              t: "সুগন্ধি নতুন ধান",
-              b: "ছোট দানার সুগন্ধি চাল; পোলাও ও পায়েসের জন্য আদর্শ।",
-              st: "বায়ুরোধী পাত্রে শুকনো স্থানে রাখুন।",
-            },
-          ],
-          W: [
-            "৫০০ গ্রাম",
-            "১ কেজি",
-            "১ লিটার",
-            "২ লিটার",
-            "৫০০ মিলি",
-            "২৫০ গ্রাম",
-            "২ কেজি",
-            "৫ কেজি",
-          ],
-          S: [
-            ["সুন্দরবন", "মধু"],
-            ["পাবনা", "গাওয়া ঘি"],
-            ["বগুড়া", "দেশি সরিষা ও কাঠের ঘানি"],
-            ["যশোর", "খেজুরের গুড়"],
-          ],
-        },
-        en: {
-          n1: "Products",
-          trk: "Track order",
-          trT: "Track your order",
-          trBtn: "Track",
-          trDemo: "Demo ID:",
-          trBad: "Order ID not found. Please check it and try again.",
-          trDate: "Order date",
-          trAreaL: "Area",
-          trArea: ["Inside Dhaka", "Outside Dhaka"],
-          trSteps: [
-            "Order received",
-            "Packing in progress",
-            "Handed to courier",
-            "Delivered",
-          ],
-          cbT: "Finding the form a hassle? Just enter your mobile number and our representative will call you within 15 minutes to take your order.",
-          cbBtn: "Request a call",
-          cbPh: "Mobile number (11 digits)",
-          cbOk: "Thank you! Your request is sent. We will call you within 15 minutes.",
-          cbBad: "Enter a valid 11-digit mobile number.",
-          eta: "Estimated Delivery: ",
-          gift: "Send as a gift?",
-          hideP: "Hide price on invoice",
-          gMsg: "Gift message for your loved one",
-          giftYes: "Sent as a gift",
-          call: "Call",
-          waB: "WhatsApp",
-          cartL: "Cart",
-          U: [
-            [
-              "Lasts a family of 4 about 3–4 weeks",
-              "Lasts a family of 4 about 1.5–2 months",
-            ],
-            [
-              "Lasts a family about 3 weeks",
-              "Lasts a family of 4 about 1.5 months",
-            ],
-            [
-              "About 2–3 weeks of regular cooking",
-              "Best for a whole month for the family",
-            ],
-            [
-              "Enough for pitha and payesh 2–3 times",
-              "For the whole family’s winter feasts",
-            ],
-            [
-              "Lasts a family about 3 weeks",
-              "Lasts a family of 4 about 1.5–2 months",
-            ],
-            ["About 2 weeks of regular use", "About a month for the family"],
-            ["1–2 weeks of kids’ snacks", "About a month for the family"],
-            [
-              "About 1 week for a family of 4",
-              "About 2–3 weeks for the family",
-            ],
-          ],
-          n2: "Purity",
-          n3: "Compare",
-          n4: "Reviews",
-          n5: "FAQ",
-          hBadge:
-            "🌿 100% Chemical & Adulteration Free | Sourced Straight From Rural Bangladesh",
-          hH: "Nature’s True Taste, Delivered to Your Home",
-          hS: "Pure Sundarbans honey, Pabna gawa ghee and wood-pressed mustard oil. Taste it in front of the delivery man before you pay — guaranteed.",
-          hC1: "Shop Now",
-          hC2: "How to Spot Real",
-          hTrust: "★ 4.9/5 | 5,000+ Happy Families",
-          whyT: "Why Khati Ghor?",
-          pil: [
-            [
-              "🧪",
-              "Lab Tested & 100% Pure",
-              "No sugar, colour or preservatives.",
-            ],
-            [
-              "👅",
-              "Taste Before You Pay",
-              "Check the taste and aroma in front of the delivery man before paying.",
-            ],
-            [
-              "📦",
-              "Safe Packaging & Free Replacement",
-              "3-layer bubble wrap and food-grade glass jars. 100% free replacement if broken or leaking.",
-            ],
-            [
-              "💵",
-              "Order Without Advance Payment",
-              "Cash on delivery across Bangladesh.",
-            ],
-          ],
-          batch: "Fresh batch: November 2026",
-          src: "Source",
-          det: "Quick view",
-          add: "Add to cart",
-          added: "Added to cart ✓",
-          cT: "Family Purity Combo Pack",
-          cD: "Sundarbans Honey (500 g) + Pabna Gawa Ghee (500 g) + Mustard Oil (1 L)",
-          cB: "Save ৳350 + free delivery nationwide!",
-          cBtn: "Add combo to cart",
-          comboName: "Family Purity Combo Pack",
-          sT: "Where Our Food Comes From",
-          cmpA: "Khati Ghor",
-          cmpB: "Typical market products",
-          cmp: [
-            ["Processing", "Raw and wood-pressed", "Chemically refined"],
-            [
-              "Purity",
-              "100% free of sugar & preservatives",
-              "Risk of flavouring and adulteration",
-            ],
-            [
-              "Freshness",
-              "Fresh batch with harvest date",
-              "Stored for long periods",
-            ],
-            [
-              "Assurance",
-              "Taste before paying & free replacement",
-              "No guarantee",
-            ],
-          ],
-          gT: "Test Real Products at Home",
-          cert: "BSTI & Lab-Tested Purity Certificate",
-          tabs: [
-            [
-              "Honey test",
-              [
-                "Drop a spoon of honey in a glass of water; real honey sinks and stays lumped.",
-                "Put a drop on cotton cloth; real honey will not spread or soak in.",
-                "Real honey smells lightly floral, never artificial.",
-              ],
-            ],
-            [
-              "Ghee test",
-              [
-                "Place a spoon of ghee on your palm; real ghee melts quickly with body heat.",
-                "When heated it gives a grainy aroma and a clear golden liquid.",
-                "In the fridge it sets evenly with no separate layers.",
-              ],
-            ],
-            [
-              "Mustard oil test",
-              [
-                "Real oil has a sharp mustard aroma; be wary if it smells flat.",
-                "A drop on the tongue gives a mild pungency, not bitterness.",
-                "In the fridge it thickens but stays clear.",
-              ],
-            ],
-          ],
-          revs: [
-            [
-              "Rafia Akter",
-              "Dhaka",
-              "The glass jar came in 3 layers of wrap with zero leakage. The honey smells completely authentic.",
-            ],
-            [
-              "Tanvir Hossain",
-              "Chattogram",
-              "Reached Chattogram in 3 days. The ghee’s aroma took me straight back to childhood.",
-            ],
-            [
-              "Sumaiya Islam",
-              "Sylhet",
-              "I tasted it before paying. The mustard oil has a real kick and the packaging is very safe.",
-            ],
-          ],
-          faq: [
-            [
-              "Is honey fake if it crystallises in winter?",
-              "No. Pure honey’s glucose naturally crystallises in cold weather. Place the jar in lukewarm water for a while and it turns liquid again.",
-            ],
-            [
-              "What if the glass jar breaks in transit?",
-              "100% free replacement. Tell us if it arrives broken or leaking and we will send a new one.",
-            ],
-            [
-              "Do I need to pay in advance?",
-              "No. Full cash on delivery across Bangladesh.",
-            ],
-            [
-              "What are the delivery charge and time?",
-              "Dhaka ৳70 in 24–48h, outside Dhaka ৳130 in 2–4 days. Free over ৳1,500 or with the Combo Pack.",
-            ],
-          ],
-          fM: "Pure village-grown food, straight from farmers to your home.",
-          fPh: "Phone / WhatsApp: +880 1711-000000",
-          fAd: "Address: House 18, Road 04, Dhanmondi, Dhaka-1209",
-          fHr: "Hours: Daily 9 AM – 10 PM",
-          cartT: "Your Cart",
-          empty: "Your cart is empty. Add something you like.",
-          fdMore: (x) => `Add ${x} more for free delivery!`,
-          fdOk: "Free delivery unlocked! 🎉",
-          cpPh: "Coupon code",
-          apply: "Apply",
-          cpHint: "Use coupon for 10% off: KHATI10",
-          cpOk: "Coupon applied: 10% off!",
-          cpBad: "This coupon code is not valid.",
-          fName: "Customer name *",
-          fPhone: "Mobile number *",
-          fAddr: "Full address *",
-          z1: "Inside Dhaka ৳70",
-          z2: "Outside Dhaka ৳130",
-          cod: "Cash on Delivery",
-          bk: "bKash",
-          ng: "Nagad",
-          mer: "Merchant number (Send Money):",
-          trx: "Transaction ID (TrxID) *",
-          sub: "Subtotal",
-          dis: "Discount",
-          del: "Delivery",
-          tot: "Total",
-          free: "৳0 (Free)",
-          confirm: "Confirm order",
-          eName: "Enter your name.",
-          ePhone: "Enter a valid mobile number (e.g. 01711000000).",
-          eAddr: "Enter your address.",
-          eTrx: "Enter the TrxID.",
-          oT: "Order placed! 🎉",
-          oId: "Order ID",
-          oSub: "We will contact you shortly.",
-          wa: "Send Receipt on WhatsApp",
-          close: "Close",
-          qv: { b: "Benefits", s: "Storage guide", o: "Origin", d: "Batch" },
-          P: [
-            {
-              n: "Sundarbans Pure Honey",
-              s: "Sundarbans",
-              t: "Safe for children over 1 year",
-              b: "Rich in antioxidants and natural enzymes; supports throat health and immunity.",
-              st: "Keep cool and dry. Pure honey naturally crystallises in winter — that does not mean it is fake. Do not give honey to infants under 1 year.",
-            },
-            {
-              n: "Pabna Pure Gawa Ghee",
-              s: "Pabna",
-              t: "100% adulteration free",
-              b: "Source of vitamins A, D, E and healthy fats; aids digestion.",
-              st: "Use a dry spoon. Lasts 2–3 months at room temperature, longer in the fridge.",
-            },
-            {
-              n: "Wood-Pressed Mustard Oil",
-              s: "Bogura",
-              t: "Wood-pressed",
-              b: "Cold-pressed, so natural nutrients and pungency stay intact.",
-              st: "Keep away from direct sunlight with the lid closed.",
-            },
-            {
-              n: "Jashore Date Jaggery",
-              s: "Jashore",
-              t: "No refined sugar",
-              b: "Natural sweetener rich in iron and minerals.",
-              st: "Store in an airtight container in a dry place.",
-            },
-            {
-              n: "Dinajpur Litchi Flower Honey",
-              s: "Dinajpur",
-              t: "Natural flower honey",
-              b: "Light floral aroma and sweet taste; a natural sweetener rich in antioxidants.",
-              st: "Keep cool and dry. Crystallising in winter is normal. Do not give honey to infants under 1 year.",
-            },
-            {
-              n: "Wood-Pressed Coconut Oil",
-              s: "Barishal",
-              t: "Wood-pressed",
-              b: "Use for cooking, hair and skin care; the natural aroma stays intact.",
-              st: "Keep in a cool place. It may solidify in winter; lukewarm water melts it.",
-            },
-            {
-              n: "Rajshahi Amsotto (Mango Leather)",
-              s: "Rajshahi",
-              t: "Preservative free",
-              b: "Full of natural mango flavour and fibre; a tasty snack for kids.",
-              st: "Keep in an airtight tin in a dry place.",
-            },
-            {
-              n: "Thakurgaon Chinigura Rice",
-              s: "Thakurgaon",
-              t: "Aromatic new harvest",
-              b: "Small-grain aromatic rice, ideal for polao and payesh.",
-              st: "Store in an airtight container in a dry place.",
-            },
-          ],
-          W: ["500 g", "1 kg", "1 L", "2 L", "500 ml", "250 g", "2 kg", "5 kg"],
-          S: [
-            ["Sundarbans", "Honey"],
-            ["Pabna", "Gawa ghee"],
-            ["Bogura", "Local mustard & wood press"],
-            ["Jashore", "Date palm jaggery"],
-          ],
-        },
-      };
-      const ART = [
-        '<svg viewBox="0 0 200 150"><rect x="62" y="22" width="76" height="14" rx="4" fill="#92400E"/><rect x="56" y="36" width="88" height="92" rx="18" fill="#F59E0B"/><rect x="56" y="76" width="88" height="52" rx="14" fill="#D97706"/><rect x="72" y="62" width="56" height="40" rx="6" fill="#FEF3C7"/><path d="M100 70c5 7 8 10 8 14a8 8 0 01-16 0c0-4 3-7 8-14z" fill="#D97706"/></svg>',
-        '<svg viewBox="0 0 200 150"><rect x="58" y="26" width="84" height="14" rx="4" fill="#1B4332"/><rect x="48" y="40" width="104" height="88" rx="16" fill="#FDE68A"/><rect x="48" y="40" width="104" height="24" rx="12" fill="#FCD34D"/><rect x="68" y="74" width="64" height="34" rx="6" fill="#FFFBEB"/><circle cx="100" cy="91" r="9" fill="#F59E0B"/></svg>',
-        '<svg viewBox="0 0 200 150"><rect x="90" y="8" width="20" height="22" rx="3" fill="#166534"/><path d="M85 30h30l12 20v78a8 8 0 01-8 8H81a8 8 0 01-8-8V50z" fill="#FACC15"/><rect x="79" y="68" width="42" height="40" rx="4" fill="#FEFCE8"/><g fill="#EAB308"><circle cx="100" cy="82" r="5"/><circle cx="100" cy="98" r="5"/><circle cx="92" cy="90" r="5"/><circle cx="108" cy="90" r="5"/></g><circle cx="100" cy="90" r="3.5" fill="#92400E"/></svg>',
-        '<svg viewBox="0 0 200 150"><rect x="34" y="88" width="68" height="40" rx="8" fill="#78350F"/><rect x="98" y="88" width="68" height="40" rx="8" fill="#92400E"/><rect x="64" y="50" width="72" height="42" rx="8" fill="#B45309"/><rect x="72" y="56" width="26" height="8" rx="4" fill="#D97706" opacity=".6"/><rect x="42" y="94" width="26" height="8" rx="4" fill="#B45309" opacity=".6"/><rect x="106" y="94" width="26" height="8" rx="4" fill="#B45309" opacity=".6"/></svg>',
-        '<svg viewBox="0 0 200 150"><rect x="62" y="22" width="76" height="14" rx="4" fill="#BE123C"/><rect x="56" y="36" width="88" height="92" rx="18" fill="#FBBF24"/><rect x="56" y="80" width="88" height="48" rx="14" fill="#F59E0B"/><rect x="72" y="62" width="56" height="40" rx="6" fill="#FFF7ED"/><circle cx="100" cy="84" r="11" fill="#E11D48"/><path d="M100 73c0-6 5-9 9-9-1 5-4 8-9 9z" fill="#15803D"/></svg>',
-        '<svg viewBox="0 0 200 150"><rect x="58" y="26" width="84" height="14" rx="4" fill="#92400E"/><rect x="48" y="40" width="104" height="88" rx="16" fill="#F5F5F4"/><rect x="48" y="40" width="104" height="22" rx="12" fill="#E7E5E4"/><rect x="68" y="72" width="64" height="40" rx="6" fill="#FFFBEB"/><circle cx="100" cy="92" r="13" fill="#78350F"/><path d="M89 92a11 11 0 0022 0z" fill="#FAFAF9"/></svg>',
-        '<svg viewBox="0 0 200 150"><rect x="38" y="84" width="124" height="42" rx="8" fill="#EA580C" transform="rotate(-4 100 105)"/><rect x="44" y="62" width="112" height="42" rx="8" fill="#F59E0B" transform="rotate(3 100 83)"/><rect x="50" y="40" width="100" height="42" rx="8" fill="#FBBF24"/><path d="M150 36c14-4 22 4 24 14-12 2-22-2-24-14z" fill="#15803D"/></svg>',
-        '<svg viewBox="0 0 200 150"><path d="M62 38c12-14 64-14 76 0l16 80a10 10 0 01-10 12H56a10 10 0 01-10-12z" fill="#D6B98C"/><rect x="78" y="36" width="44" height="9" rx="4" fill="#92400E"/><rect x="76" y="68" width="48" height="38" rx="5" fill="#FEFCE8"/><g fill="#A16207"><ellipse cx="90" cy="84" rx="5" ry="2.2" transform="rotate(-30 90 84)"/><ellipse cx="104" cy="82" rx="5" ry="2.2" transform="rotate(20 104 82)"/><ellipse cx="97" cy="93" rx="5" ry="2.2"/><ellipse cx="111" cy="92" rx="5" ry="2.2" transform="rotate(-20 111 92)"/></g></svg>',
-      ];
-      const PD = [
-        {
-          e: ART[0],
-          v: [
-            [0, 650],
-            [1, 1250],
-          ],
-        },
-        {
-          e: ART[1],
-          v: [
-            [0, 850],
-            [1, 1650],
-          ],
-        },
-        {
-          e: ART[2],
-          v: [
-            [2, 380],
-            [3, 740],
-          ],
-        },
-        {
-          e: ART[3],
-          v: [
-            [0, 320],
-            [1, 600],
-          ],
-        },
-        {
-          e: ART[4],
-          v: [
-            [0, 720],
-            [1, 1400],
-          ],
-        },
-        {
-          e: ART[5],
-          v: [
-            [4, 420],
-            [2, 800],
-          ],
-        },
-        {
-          e: ART[6],
-          v: [
-            [5, 280],
-            [0, 520],
-          ],
-        },
-        {
-          e: ART[7],
-          v: [
-            [6, 380],
-            [7, 900],
-          ],
-        },
-      ];
-      const sel = [0, 0, 0, 0, 0, 0, 0, 0];
-      const L = () => T[lang],
-        t = (k) => L()[k];
-      const N = (n) =>
-        lang === "bn"
-          ? "৳" + n.toLocaleString("bn-BD")
-          : "৳" + n.toLocaleString("en-US");
-      const D = (s) =>
-        lang === "bn" ? s.replace(/\d/g, (d) => "০১২৩৪৫৬৭৮৯"[d]) : s;
-      const imgH = (p, c = "") => `<div class="img ${c}">${p.e}</div>`;
-      function toast(m) {
-        const e = $("#toast");
-        e.textContent = m;
-        e.style.opacity = 1;
-        clearTimeout(toast.t);
-        toast.t = setTimeout(() => (e.style.opacity = 0), 1800);
-      }
+<!-- Cart drawer -->
+<div id="ov" class="fixed inset-0 z-[55] bg-black/50 hidden"></div>
+<aside id="drawer" class="card fixed top-0 right-0 h-full w-full max-w-md z-[60] translate-x-full overflow-y-auto p-5">
+<div class="flex justify-between items-center"><h3 class="text-xl font-bold pri" data-i18n="cartT"></h3><button id="closeCart" class="pill" aria-label="Close">✕</button></div>
+<div id="items" class="mt-4 space-y-3"></div>
+<div id="co" class="hidden mt-5 space-y-4">
+<div><div class="text-sm font-medium" id="fdTxt"></div><div class="h-2 rounded-full mt-1.5" style="background:var(--bd)"><div id="fdBar" class="h-2 rounded-full" style="background:var(--acc);width:0"></div></div></div>
+<div><div class="flex gap-2"><input id="coupon" class="inp" data-ph="cpPh"><button id="applyCp" class="btn2" data-i18n="apply"></button></div><p id="cpMsg" class="text-xs mt-1 mu" data-i18n="cpHint"></p></div>
+<div class="space-y-2.5">
+<input id="fName" class="inp" data-ph="fName"><input id="fPhone" class="inp" inputmode="tel" data-ph="fPhone"><textarea id="fAddr" rows="2" class="inp" data-ph="fAddr"></textarea>
+<select id="zone" class="inp"><option value="70" data-i18n="z1"></option><option value="130" data-i18n="z2"></option></select><p id="eta" class="text-xs acc font-medium"></p>
+<label class="flex items-center gap-2 text-sm"><input type="checkbox" id="gift" class="w-4 h-4"><span data-i18n="gift"></span></label>
+<div id="giftBox" class="hidden space-y-2.5"><label class="flex items-center gap-2 text-sm"><input type="checkbox" id="hidePrice" class="w-4 h-4"><span data-i18n="hideP"></span></label><textarea id="gMsg" rows="2" class="inp" data-ph="gMsg"></textarea></div></div>
+<div class="grid grid-cols-3 gap-2 text-sm" id="pays"></div>
+<div id="payBox" class="hidden card rounded-xl p-3 text-sm space-y-2"><p><span data-i18n="mer"></span> <b>01711-000000</b></p><input id="trx" class="inp" data-ph="trx"></div>
+<div class="card rounded-xl p-4 text-sm space-y-1.5" id="sum"></div>
+<button id="confirm" class="btn w-full text-lg" data-i18n="confirm"></button>
+</div></aside>
 
-      function applyStatic() {
-        document.documentElement.lang = lang;
-        $$("[data-i18n]").forEach((e) => {
-          const v = t(e.dataset.i18n);
-          if (typeof v === "string") e.textContent = v;
-        });
-        $$("[data-ph]").forEach((e) => (e.placeholder = t(e.dataset.ph)));
-        $("#themeBtn").textContent = dark ? "☀️" : "🌙";
-        $$("#langBtn [data-l]").forEach((e) =>
-          e.classList.toggle("on", e.dataset.l === lang),
-        );
-        $("#cOld").textContent = N(COMBO_OLD);
-        $("#cNew").textContent = N(COMBO);
-      }
-      function renderPage() {
-        $("#pillars").innerHTML = t("pil")
-          .map(
-            (p) =>
-              `<div class="card rounded-2xl p-5"><div class="text-3xl">${p[0]}</div><h3 class="font-bold mt-3 pri">${p[1]}</h3><p class="mu text-sm mt-1.5 leading-relaxed">${p[2]}</p></div>`,
-          )
-          .join("");
-        $("#grid").innerHTML = PD.map((p, i) => {
-          const x = t("P")[i],
-            v = p.v[sel[i]];
-          return `<article class="card rounded-2xl overflow-hidden flex flex-col"><div class="relative">${imgH(p, "aspect-[4/3]")}<span class="absolute top-2 left-2 text-[11px] rounded-full px-2 py-1 text-white" style="background:var(--pri)">${t("batch")}</span><span class="absolute bottom-2 left-2 text-[11px] rounded-full px-2 py-1 bg-white text-stone-800">${x.t}</span></div>
- <div class="p-4 flex flex-col gap-3 flex-1"><div><h3 class="font-bold leading-snug">${x.n}</h3><p class="text-xs mu mt-1">${t("src")}: ${x.s}</p></div>
- <div class="flex gap-2 flex-wrap">${p.v.map((q, j) => `<button class="pill ${j === sel[i] ? "on" : ""}" onclick="sel[${i}]=${j};renderPage()">${t("W")[q[0]]}</button>`).join("")}</div>
- <p class="text-xs mu -mt-1">💡 ${t("U")[i][sel[i]]}</p><div class="text-2xl font-bold acc">${N(v[1])}</div>
- <div class="flex gap-2 mt-auto"><button class="btn2 flex-1 !px-2 text-sm" onclick="qv(${i})">${t("det")}</button><button class="btn flex-1 !px-2 text-sm" onclick="addItem(${i})">${t("add")}</button></div></div></article>`;
-        }).join("");
-        $("#sources").innerHTML = t("S")
-          .map(
-            (s, i) =>
-              `<div class="card rounded-2xl p-5 text-center"><div class="ico">${PD[i].e}</div><h3 class="font-bold mt-2 pri">${s[0]}</h3><p class="text-sm mu mt-1">${s[1]}</p></div>`,
-          )
-          .join("");
-        $("#cmp").innerHTML = t("cmp")
-          .map(
-            (r) =>
-              `<tr class="border-t" style="border-color:var(--bd)"><td class="p-4 font-semibold">${r[0]}</td><td class="p-4"><span class="text-emerald-600 font-bold">✓</span> ${r[1]}</td><td class="p-4 mu"><span class="text-red-500 font-bold">✗</span> ${r[2]}</td></tr>`,
-          )
-          .join("");
-        $("#tabs").innerHTML = t("tabs")
-          .map(
-            (x, i) =>
-              `<button class="pill ${i === tab ? "on" : ""}" onclick="tab=${i};renderPage()">${x[0]}</button>`,
-          )
-          .join("");
-        $("#tabBody").innerHTML = `<ol class="space-y-3">${t("tabs")
-          [tab][1].map(
-            (s, i) =>
-              `<li class="flex gap-3"><b class="pri shrink-0">${D(String(i + 1))}.</b><span>${s}</span></li>`,
-          )
-          .join(
-            "",
-          )}</ol><span class="inline-block mt-5 text-sm font-semibold rounded-full px-4 py-1.5" style="background:var(--pri);color:var(--bg)">✔ ${t("cert")}</span>`;
-        $("#revs").innerHTML = t("revs")
-          .map(
-            (r) =>
-              `<div class="card rounded-2xl p-5"><div class="acc">★★★★★</div><p class="mt-2 text-sm leading-relaxed">${r[2]}</p><p class="mt-3 text-sm font-semibold">${r[0]} <span class="mu font-normal">· ${r[1]}</span></p></div>`,
-          )
-          .join("");
-        $("#faqs").innerHTML = t("faq")
-          .map(
-            (f) =>
-              `<details class="card rounded-xl p-4"><summary class="font-semibold cursor-pointer">${f[0]}</summary><p class="mu text-sm mt-2 leading-relaxed">${f[1]}</p></details>`,
-          )
-          .join("");
-        $("#pays").innerHTML = [
-          ["cod", "cod"],
-          ["bkash", "bk"],
-          ["nagad", "ng"],
-        ]
-          .map(
-            (p) =>
-              `<button class="pill ${pay === p[0] ? "on" : ""}" onclick="pay='${p[0]}';renderPage();renderCart()">${t(p[1])}</button>`,
-          )
-          .join("");
-        $("#payBox").classList.toggle("hidden", pay === "cod");
-        renderCart();
-      }
+<script>
+const $=s=>document.querySelector(s),$$=s=>[...document.querySelectorAll(s)];
+let lang=localStorage.getItem('kg_lang')||'bn',dark=localStorage.getItem('kg_theme')==='dark';
+let cart=[],coupon=false,pay='cod',tab=0;
+const COMBO=1530,COMBO_OLD=1880;
+const T={bn:{
+n1:'পণ্যসমূহ',trk:'ট্র্যাক অর্ডার',trT:'অর্ডার ট্র্যাক করুন',trBtn:'ট্র্যাক করুন',trDemo:'ডেমো আইডি:',trBad:'এই অর্ডার আইডি পাওয়া যায়নি। আইডিটি আবার দেখে লিখুন।',trDate:'অর্ডারের তারিখ',trAreaL:'এলাকা',trArea:['ঢাকার ভেতরে','ঢাকার বাইরে'],trSteps:['অর্ডার গৃহীত','প্যাকিং চলছে','কুরিয়ারে হস্তান্তর','ডেলিভারি সম্পন্ন'],
+cbT:'ফর্ম পূরণ করতে ঝামেলা মনে হচ্ছে? শুধু মোবাইল নম্বর দিন, আমাদের প্রতিনিধি ১৫ মিনিটের মধ্যে কল করে অর্ডার নেবেন।',cbBtn:'কল রিকোয়েস্ট পাঠান',cbPh:'মোবাইল নম্বর (১১ ডিজিট)',cbOk:'ধন্যবাদ! আপনার অনুরোধ পাঠানো হয়েছে। ১৫ মিনিটের মধ্যে আমরা কল করব।',cbBad:'সঠিক ১১ ডিজিটের মোবাইল নম্বর দিন।',
+eta:'সম্ভাব্য ডেলিভারি: ',gift:'উপহার হিসেবে পাঠাতে চান?',hideP:'রসিদে পণ্যের দাম গোপন রাখুন',gMsg:'প্রিয়জনের জন্য শুভেচ্ছাবার্তা',giftYes:'উপহার হিসেবে পাঠানো হবে',call:'কল করুন',waB:'হোয়াটসঅ্যাপ',cartL:'কার্ট',
+U:[['৪ জনের পরিবারে প্রায় ৩-৪ সপ্তাহ চলবে','৪ জনের পরিবারে প্রায় ১.৫ - ২ মাস চলবে'],['পরিবারের জন্য প্রায় ৩ সপ্তাহ চলবে','৪ জনের পরিবারে প্রায় ১.৫ মাস চলবে'],['নিয়মিত রান্নায় প্রায় ২-৩ সপ্তাহ','পরিবারের পুরো মাসের জন্য সেরা'],['পিঠা ও পায়েসের জন্য ২-৩ বার','পুরো পরিবারের শীতের আয়োজনের জন্য'],['পরিবারের জন্য প্রায় ৩ সপ্তাহ চলবে','৪ জনের পরিবারে প্রায় ১.৫ - ২ মাস চলবে'],['নিয়মিত ব্যবহারে প্রায় ২ সপ্তাহ','পরিবারের জন্য প্রায় ১ মাস'],['শিশুদের নাস্তায় ১-২ সপ্তাহ','পরিবারের জন্য প্রায় ১ মাস'],['৪ জনের পরিবারে প্রায় ১ সপ্তাহ','পরিবারের জন্য প্রায় ২ - ৩ সপ্তাহ']],n2:'বিশুদ্ধতা',n3:'তুলনা',n4:'রিভিউ',n5:'প্রশ্নোত্তর',
+hBadge:'🌿 ১০০% কেমিক্যাল ও ভেজালমুক্ত | সরাসরি গ্রামবাংলা থেকে সংগৃহীত',hH:'প্রকৃতির আসল স্বাদ, সরাসরি আপনার ঘরে',
+hS:'সুন্দরবনের খাঁটি মধু, পাবনার গাওয়া ঘি ও কাঠের ঘানি ভাঙা সরিষার তেল। ডেলিভারি ম্যানের সামনে টেস্ট করে টাকা দেওয়ার গ্যারান্টি।',
+hC1:'পণ্য দেখুন',hC2:'আসল চেনার উপায়',hTrust:'★ ৪.৯/৫ | ৫,০০০+ সন্তুষ্ট পরিবার',whyT:'কেন খাঁটি ঘর?',
+pil:[['🧪','ল্যাব টেস্টেড ও ১০০% বিশুদ্ধ','কোনো চিনি, রং বা প্রিজারভেটিভ নেই।'],['👅','টেস্ট করে নেওয়ার সুযোগ','ডেলিভারি ম্যানের সামনে স্বাদ ও ঘ্রাণ দেখে টাকা দেওয়ার নিশ্চয়তা।'],['📦','নিরাপদ প্যাকেজিং ও ফ্রি রিপ্লেসমেন্ট','৩-লেয়ার বাবল র‍্যাপ ও ফুড-গ্রেড কাঁচের জার। ডেলিভারিতে ভাঙা বা লিক থাকলে ১০০% ফ্রি রিপ্লেসমেন্ট।'],['💵','অগ্রিম টাকা ছাড়াই অর্ডার','সারা বাংলাদেশে ক্যাশ অন ডেলিভারি।']],
+batch:'নতুন ব্যাচ: নভেম্বর ২০২৬',src:'উৎস',det:'বিস্তারিত',add:'কার্টে যোগ করুন',added:'কার্টে যোগ হয়েছে ✓',
+cT:'ফ্যামিলি বিশুদ্ধতা কম্বো প্যাক',cD:'সুন্দরবনের মধু (৫০০ গ্রাম) + পাবনার গাওয়া ঘি (৫০০ গ্রাম) + সরিষার তেল (১ লিটার)',cB:'৳৩৫০ সাশ্রয় + সারা দেশে ফ্রি ডেলিভারি!',cBtn:'কম্বো কার্টে যোগ করুন',comboName:'ফ্যামিলি বিশুদ্ধতা কম্বো প্যাক',
+sT:'আমাদের সংগ্রহের উৎস',cmpA:'খাঁটি ঘর',cmpB:'সাধারণ বাজারের পণ্য',
+cmp:[['প্রক্রিয়াকরণ','কাঁচা ও কাঠের ঘানি','কেমিক্যাল রিফাইন্ড'],['বিশুদ্ধতা','১০০% চিনি ও প্রিজারভেটিভ মুক্ত','ফ্লেভার ও ভেজালের ঝুঁকি'],['তাজা মান','তাজা ব্যাচ ও সংগ্রহের তারিখযুক্ত','দীর্ঘদিন স্টোরে জমা'],['নিশ্চয়তা','টেস্ট করে নেওয়ার সুযোগ ও ফ্রি রিপ্লেসমেন্ট','কোনো গ্যারান্টি নেই']],
+gT:'ঘরে বসে আসল পণ্য চেনার উপায়',cert:'BSTI ও ল্যাব টেস্টেড বিশুদ্ধতার সনদ',
+tabs:[['মধু পরীক্ষা',['এক গ্লাস পানিতে এক চামচ মধু দিন; আসল মধু না গুলে তলায় জমে যাবে।','সুতির কাপড়ে এক ফোঁটা মধু ফেলুন; আসল মধু কাপড়ে ছড়িয়ে ভিজবে না।','আসল মধুতে হালকা ফুলের ঘ্রাণ থাকে, কৃত্রিম গন্ধ নয়।']],['ঘি পরীক্ষা',['এক চামচ ঘি হাতের তালুতে নিন; আসল ঘি শরীরের তাপে দ্রুত গলে যাবে।','গরম করলে দানাদার সুগন্ধ ছড়াবে ও পরিষ্কার সোনালি তরল হবে।','ফ্রিজে রাখলে সমানভাবে দানা বেঁধে জমবে, আলাদা স্তর হবে না।']],['সরিষার তেল পরীক্ষা',['তেলে ঝাঁঝালো সরিষার ঘ্রাণ থাকবে; ঘ্রাণ ফ্যাকাসে হলে সন্দেহ করুন।','এক ফোঁটা তেল জিভে দিলে হালকা ঝাঁঝ লাগবে, তিতকুটে স্বাদ নয়।','ফ্রিজে রাখলে আসল তেল ঘন হয়, কিন্তু স্বচ্ছ থাকে।']]],
+revs:[['রাফিয়া আক্তার','ঢাকা','কাঁচের জারটা ৩ লেয়ার র‍্যাপে এসেছে, একটুও লিক হয়নি। মধুর ঘ্রাণ একদম আসল।'],['তানভীর হোসেন','চট্টগ্রাম','চট্টগ্রামে ৩ দিনে পৌঁছেছে। ঘি-এর সুগন্ধ আমার ছোটবেলার কথা মনে করিয়ে দিল।'],['সুমাইয়া ইসলাম','সিলেট','ডেলিভারি ম্যানের সামনে টেস্ট করে নিলাম। সরিষার তেলের ঝাঁঝ খাঁটি, প্যাকেজিংও নিরাপদ।']],
+faq:[['শীতে মধু জমে গেলে কি সেটি ভেজাল?','না। খাঁটি মধুর গ্লুকোজ ঠান্ডায় স্বাভাবিকভাবে দানা বাঁধে। জারটি কুসুম গরম পানিতে কিছুক্ষণ রাখলে আবার তরল হয়ে যাবে।'],['কুরিয়ারে কাঁচের জার ভেঙে গেলে কী হবে?','১০০% ফ্রি রিপ্লেসমেন্ট। ডেলিভারির সময় ভাঙা বা লিক থাকলে আমাদের জানান, নতুন পণ্য পাঠিয়ে দেব।'],['অর্ডার করতে কি অগ্রিম টাকা দিতে হবে?','না। সারা বাংলাদেশে সম্পূর্ণ ক্যাশ অন ডেলিভারি।'],['ডেলিভারি চার্জ ও সময় কত?','ঢাকায় ৳৭০ (২৪-৪৮ ঘণ্টা), ঢাকার বাইরে ৳১৩০ (২-৪ দিন)। ৳১,৫০০-এর বেশি অর্ডার বা কম্বো প্যাকে ডেলিভারি ফ্রি।']],
+fM:'গ্রামবাংলার খাঁটি পণ্য, সরাসরি কৃষকের কাছ থেকে আপনার ঘরে।',fPh:'ফোন / হোয়াটসঅ্যাপ: +880 1711-000000',fAd:'ঠিকানা: বাড়ি নং-১৮, রোড-০৪, ধানমন্ডি, ঢাকা-১২০৯',fHr:'সময়সূচী: প্রতিদিন সকাল ৯টা থেকে রাত ১০টা',
+cartT:'আপনার কার্ট',empty:'কার্ট খালি। পছন্দের পণ্য যোগ করুন।',fdMore:x=>`আরও ${x} যোগ করলেই ডেলিভারি ফ্রি!`,fdOk:'ফ্রি ডেলিভারি আনলকড! 🎉',
+cpPh:'কুপন কোড',apply:'প্রয়োগ',cpHint:'১০% ছাড়ের জন্য কুপন ব্যবহার করুন: KHATI10',cpOk:'কুপন প্রয়োগ হয়েছে: ১০% ছাড়!',cpBad:'কুপন কোডটি সঠিক নয়।',
+fName:'কাস্টমারের নাম *',fPhone:'মোবাইল নম্বর *',fAddr:'সম্পূর্ণ ঠিকানা *',z1:'ঢাকার ভেতরে ৳৭০',z2:'ঢাকার বাইরে ৳১৩০',
+cod:'ক্যাশ অন ডেলিভারি',bk:'বিকাশ',ng:'নগদ',mer:'মার্চেন্ট নম্বর (সেন্ড মানি):',trx:'ট্রানজেকশন আইডি (TrxID) *',
+sub:'সাবটোটাল',dis:'ডিসকাউন্ট',del:'ডেলিভারি চার্জ',tot:'সর্বমোট',free:'৳০ (ফ্রি)',confirm:'অর্ডার কনফার্ম করুন',
+eName:'আপনার নাম লিখুন।',ePhone:'সঠিক মোবাইল নম্বর দিন (যেমন: 01711000000)।',eAddr:'ঠিকানা লিখুন।',eTrx:'TrxID দিন।',
+oT:'অর্ডার সফল হয়েছে! 🎉',oId:'অর্ডার আইডি',oSub:'আমরা শীঘ্রই আপনার সাথে যোগাযোগ করব।',wa:'WhatsApp-এ অর্ডার রসিদ পাঠান',close:'বন্ধ করুন',
+qv:{b:'পুষ্টিগুণ',s:'সংরক্ষণ নির্দেশিকা',o:'উৎস',d:'ব্যাচ'},
+P:[{n:'সুন্দরবনের খাঁটি মধু',s:'সুন্দরবন',t:'১ বছরের বেশি শিশুদের জন্য নিরাপদ',b:'অ্যান্টিঅক্সিডেন্ট ও প্রাকৃতিক এনজাইমে ভরপুর; গলা ও রোগ প্রতিরোধে সহায়ক।',st:'ঠান্ডা ও শুকনো স্থানে রাখুন। শীতে খাঁটি মধু স্বাভাবিকভাবে দানা বাঁধে, এটি ভেজাল নয়। ১ বছরের কম বয়সী শিশুকে মধু দেবেন না।'},{n:'পাবনার খাঁটি গাওয়া ঘি',s:'পাবনা',t:'১০০% ভেজালমুক্ত',b:'ভিটামিন A, D, E ও স্বাস্থ্যকর ফ্যাটের উৎস; হজমে সহায়ক।',st:'শুকনো চামচ ব্যবহার করুন। ঘরের তাপমাত্রায় ২-৩ মাস, ফ্রিজে আরও বেশি দিন ভালো থাকে।'},{n:'কাঠের ঘানি ভাঙা সরিষার তেল',s:'বগুড়া',t:'কাঠের ঘানি',b:'কোল্ড-প্রেসড হওয়ায় প্রাকৃতিক পুষ্টি ও ঝাঁঝ অটুট থাকে।',st:'সরাসরি রোদ থেকে দূরে, ঢাকনা বন্ধ করে রাখুন।'},{n:'যশোরের খেজুরের পাটালি গুড়',s:'যশোর',t:'রিফাইন্ড চিনিমুক্ত',b:'আয়রন ও খনিজে সমৃদ্ধ প্রাকৃতিক মিষ্টি।',st:'বায়ুরোধী পাত্রে শুকনো স্থানে রাখুন।'},{n:'দিনাজপুরের লিচু ফুলের মধু',s:'দিনাজপুর',t:'প্রাকৃতিক ফুলের মধু',b:'হালকা ফুলের সুবাস ও মিষ্টি স্বাদ; অ্যান্টিঅক্সিডেন্টসমৃদ্ধ প্রাকৃতিক মিষ্টি।',st:'ঠান্ডা ও শুকনো স্থানে রাখুন। শীতে দানা বাঁধা স্বাভাবিক। ১ বছরের কম বয়সী শিশুকে মধু দেবেন না।'},{n:'কাঠের ঘানি নারকেল তেল',s:'বরিশাল',t:'কাঠের ঘানি',b:'রান্না, চুল ও ত্বকের যত্নে ব্যবহার করা যায়; প্রাকৃতিক গন্ধ অটুট থাকে।',st:'ঠান্ডা স্থানে রাখুন। শীতে জমে যাওয়া স্বাভাবিক, কুসুম গরম পানিতে রাখলে গলে যায়।'},{n:'রাজশাহীর আমসত্ত্ব',s:'রাজশাহী',t:'প্রিজারভেটিভমুক্ত',b:'আমের প্রাকৃতিক স্বাদ ও ফাইবারে ভরপুর; শিশুদের জন্য মুখরোচক নাস্তা।',st:'বায়ুরোধী কৌটায় শুকনো স্থানে রাখুন।'},{n:'ঠাকুরগাঁওয়ের চিনিগুঁড়া চাল',s:'ঠাকুরগাঁও',t:'সুগন্ধি নতুন ধান',b:'ছোট দানার সুগন্ধি চাল; পোলাও ও পায়েসের জন্য আদর্শ।',st:'বায়ুরোধী পাত্রে শুকনো স্থানে রাখুন।'}],
+W:['৫০০ গ্রাম','১ কেজি','১ লিটার','২ লিটার','৫০০ মিলি','২৫০ গ্রাম','২ কেজি','৫ কেজি'],
+S:[['সুন্দরবন','মধু'],['পাবনা','গাওয়া ঘি'],['বগুড়া','দেশি সরিষা ও কাঠের ঘানি'],['যশোর','খেজুরের গুড়']]},
+en:{
+n1:'Products',trk:'Track order',trT:'Track your order',trBtn:'Track',trDemo:'Demo ID:',trBad:'Order ID not found. Please check it and try again.',trDate:'Order date',trAreaL:'Area',trArea:['Inside Dhaka','Outside Dhaka'],trSteps:['Order received','Packing in progress','Handed to courier','Delivered'],
+cbT:'Finding the form a hassle? Just enter your mobile number and our representative will call you within 15 minutes to take your order.',cbBtn:'Request a call',cbPh:'Mobile number (11 digits)',cbOk:'Thank you! Your request is sent. We will call you within 15 minutes.',cbBad:'Enter a valid 11-digit mobile number.',
+eta:'Estimated Delivery: ',gift:'Send as a gift?',hideP:'Hide price on invoice',gMsg:'Gift message for your loved one',giftYes:'Sent as a gift',call:'Call',waB:'WhatsApp',cartL:'Cart',
+U:[['Lasts a family of 4 about 3–4 weeks','Lasts a family of 4 about 1.5–2 months'],['Lasts a family about 3 weeks','Lasts a family of 4 about 1.5 months'],['About 2–3 weeks of regular cooking','Best for a whole month for the family'],['Enough for pitha and payesh 2–3 times','For the whole family’s winter feasts'],['Lasts a family about 3 weeks','Lasts a family of 4 about 1.5–2 months'],['About 2 weeks of regular use','About a month for the family'],['1–2 weeks of kids’ snacks','About a month for the family'],['About 1 week for a family of 4','About 2–3 weeks for the family']],n2:'Purity',n3:'Compare',n4:'Reviews',n5:'FAQ',
+hBadge:'🌿 100% Chemical & Adulteration Free | Sourced Straight From Rural Bangladesh',hH:'Nature’s True Taste, Delivered to Your Home',
+hS:'Pure Sundarbans honey, Pabna gawa ghee and wood-pressed mustard oil. Taste it in front of the delivery man before you pay — guaranteed.',
+hC1:'Shop Now',hC2:'How to Spot Real',hTrust:'★ 4.9/5 | 5,000+ Happy Families',whyT:'Why Khati Ghor?',
+pil:[['🧪','Lab Tested & 100% Pure','No sugar, colour or preservatives.'],['👅','Taste Before You Pay','Check the taste and aroma in front of the delivery man before paying.'],['📦','Safe Packaging & Free Replacement','3-layer bubble wrap and food-grade glass jars. 100% free replacement if broken or leaking.'],['💵','Order Without Advance Payment','Cash on delivery across Bangladesh.']],
+batch:'Fresh batch: November 2026',src:'Source',det:'Quick view',add:'Add to cart',added:'Added to cart ✓',
+cT:'Family Purity Combo Pack',cD:'Sundarbans Honey (500 g) + Pabna Gawa Ghee (500 g) + Mustard Oil (1 L)',cB:'Save ৳350 + free delivery nationwide!',cBtn:'Add combo to cart',comboName:'Family Purity Combo Pack',
+sT:'Where Our Food Comes From',cmpA:'Khati Ghor',cmpB:'Typical market products',
+cmp:[['Processing','Raw and wood-pressed','Chemically refined'],['Purity','100% free of sugar & preservatives','Risk of flavouring and adulteration'],['Freshness','Fresh batch with harvest date','Stored for long periods'],['Assurance','Taste before paying & free replacement','No guarantee']],
+gT:'Test Real Products at Home',cert:'BSTI & Lab-Tested Purity Certificate',
+tabs:[['Honey test',['Drop a spoon of honey in a glass of water; real honey sinks and stays lumped.','Put a drop on cotton cloth; real honey will not spread or soak in.','Real honey smells lightly floral, never artificial.']],['Ghee test',['Place a spoon of ghee on your palm; real ghee melts quickly with body heat.','When heated it gives a grainy aroma and a clear golden liquid.','In the fridge it sets evenly with no separate layers.']],['Mustard oil test',['Real oil has a sharp mustard aroma; be wary if it smells flat.','A drop on the tongue gives a mild pungency, not bitterness.','In the fridge it thickens but stays clear.']]],
+revs:[['Rafia Akter','Dhaka','The glass jar came in 3 layers of wrap with zero leakage. The honey smells completely authentic.'],['Tanvir Hossain','Chattogram','Reached Chattogram in 3 days. The ghee’s aroma took me straight back to childhood.'],['Sumaiya Islam','Sylhet','I tasted it before paying. The mustard oil has a real kick and the packaging is very safe.']],
+faq:[['Is honey fake if it crystallises in winter?','No. Pure honey’s glucose naturally crystallises in cold weather. Place the jar in lukewarm water for a while and it turns liquid again.'],['What if the glass jar breaks in transit?','100% free replacement. Tell us if it arrives broken or leaking and we will send a new one.'],['Do I need to pay in advance?','No. Full cash on delivery across Bangladesh.'],['What are the delivery charge and time?','Dhaka ৳70 in 24–48h, outside Dhaka ৳130 in 2–4 days. Free over ৳1,500 or with the Combo Pack.']],
+fM:'Pure village-grown food, straight from farmers to your home.',fPh:'Phone / WhatsApp: +880 1711-000000',fAd:'Address: House 18, Road 04, Dhanmondi, Dhaka-1209',fHr:'Hours: Daily 9 AM – 10 PM',
+cartT:'Your Cart',empty:'Your cart is empty. Add something you like.',fdMore:x=>`Add ${x} more for free delivery!`,fdOk:'Free delivery unlocked! 🎉',
+cpPh:'Coupon code',apply:'Apply',cpHint:'Use coupon for 10% off: KHATI10',cpOk:'Coupon applied: 10% off!',cpBad:'This coupon code is not valid.',
+fName:'Customer name *',fPhone:'Mobile number *',fAddr:'Full address *',z1:'Inside Dhaka ৳70',z2:'Outside Dhaka ৳130',
+cod:'Cash on Delivery',bk:'bKash',ng:'Nagad',mer:'Merchant number (Send Money):',trx:'Transaction ID (TrxID) *',
+sub:'Subtotal',dis:'Discount',del:'Delivery',tot:'Total',free:'৳0 (Free)',confirm:'Confirm order',
+eName:'Enter your name.',ePhone:'Enter a valid mobile number (e.g. 01711000000).',eAddr:'Enter your address.',eTrx:'Enter the TrxID.',
+oT:'Order placed! 🎉',oId:'Order ID',oSub:'We will contact you shortly.',wa:'Send Receipt on WhatsApp',close:'Close',
+qv:{b:'Benefits',s:'Storage guide',o:'Origin',d:'Batch'},
+P:[{n:'Sundarbans Pure Honey',s:'Sundarbans',t:'Safe for children over 1 year',b:'Rich in antioxidants and natural enzymes; supports throat health and immunity.',st:'Keep cool and dry. Pure honey naturally crystallises in winter — that does not mean it is fake. Do not give honey to infants under 1 year.'},{n:'Pabna Pure Gawa Ghee',s:'Pabna',t:'100% adulteration free',b:'Source of vitamins A, D, E and healthy fats; aids digestion.',st:'Use a dry spoon. Lasts 2–3 months at room temperature, longer in the fridge.'},{n:'Wood-Pressed Mustard Oil',s:'Bogura',t:'Wood-pressed',b:'Cold-pressed, so natural nutrients and pungency stay intact.',st:'Keep away from direct sunlight with the lid closed.'},{n:'Jashore Date Jaggery',s:'Jashore',t:'No refined sugar',b:'Natural sweetener rich in iron and minerals.',st:'Store in an airtight container in a dry place.'},{n:'Dinajpur Litchi Flower Honey',s:'Dinajpur',t:'Natural flower honey',b:'Light floral aroma and sweet taste; a natural sweetener rich in antioxidants.',st:'Keep cool and dry. Crystallising in winter is normal. Do not give honey to infants under 1 year.'},{n:'Wood-Pressed Coconut Oil',s:'Barishal',t:'Wood-pressed',b:'Use for cooking, hair and skin care; the natural aroma stays intact.',st:'Keep in a cool place. It may solidify in winter; lukewarm water melts it.'},{n:'Rajshahi Amsotto (Mango Leather)',s:'Rajshahi',t:'Preservative free',b:'Full of natural mango flavour and fibre; a tasty snack for kids.',st:'Keep in an airtight tin in a dry place.'},{n:'Thakurgaon Chinigura Rice',s:'Thakurgaon',t:'Aromatic new harvest',b:'Small-grain aromatic rice, ideal for polao and payesh.',st:'Store in an airtight container in a dry place.'}],
+W:['500 g','1 kg','1 L','2 L','500 ml','250 g','2 kg','5 kg'],
+S:[['Sundarbans','Honey'],['Pabna','Gawa ghee'],['Bogura','Local mustard & wood press'],['Jashore','Date palm jaggery']]}};
+const ART=[
+'<svg viewBox="0 0 200 150"><rect x="62" y="22" width="76" height="14" rx="4" fill="#92400E"/><rect x="56" y="36" width="88" height="92" rx="18" fill="#F59E0B"/><rect x="56" y="76" width="88" height="52" rx="14" fill="#D97706"/><rect x="72" y="62" width="56" height="40" rx="6" fill="#FEF3C7"/><path d="M100 70c5 7 8 10 8 14a8 8 0 01-16 0c0-4 3-7 8-14z" fill="#D97706"/></svg>',
+'<svg viewBox="0 0 200 150"><rect x="58" y="26" width="84" height="14" rx="4" fill="#1B4332"/><rect x="48" y="40" width="104" height="88" rx="16" fill="#FDE68A"/><rect x="48" y="40" width="104" height="24" rx="12" fill="#FCD34D"/><rect x="68" y="74" width="64" height="34" rx="6" fill="#FFFBEB"/><circle cx="100" cy="91" r="9" fill="#F59E0B"/></svg>',
+'<svg viewBox="0 0 200 150"><rect x="90" y="8" width="20" height="22" rx="3" fill="#166534"/><path d="M85 30h30l12 20v78a8 8 0 01-8 8H81a8 8 0 01-8-8V50z" fill="#FACC15"/><rect x="79" y="68" width="42" height="40" rx="4" fill="#FEFCE8"/><g fill="#EAB308"><circle cx="100" cy="82" r="5"/><circle cx="100" cy="98" r="5"/><circle cx="92" cy="90" r="5"/><circle cx="108" cy="90" r="5"/></g><circle cx="100" cy="90" r="3.5" fill="#92400E"/></svg>',
+'<svg viewBox="0 0 200 150"><rect x="34" y="88" width="68" height="40" rx="8" fill="#78350F"/><rect x="98" y="88" width="68" height="40" rx="8" fill="#92400E"/><rect x="64" y="50" width="72" height="42" rx="8" fill="#B45309"/><rect x="72" y="56" width="26" height="8" rx="4" fill="#D97706" opacity=".6"/><rect x="42" y="94" width="26" height="8" rx="4" fill="#B45309" opacity=".6"/><rect x="106" y="94" width="26" height="8" rx="4" fill="#B45309" opacity=".6"/></svg>',
+'<svg viewBox="0 0 200 150"><rect x="62" y="22" width="76" height="14" rx="4" fill="#BE123C"/><rect x="56" y="36" width="88" height="92" rx="18" fill="#FBBF24"/><rect x="56" y="80" width="88" height="48" rx="14" fill="#F59E0B"/><rect x="72" y="62" width="56" height="40" rx="6" fill="#FFF7ED"/><circle cx="100" cy="84" r="11" fill="#E11D48"/><path d="M100 73c0-6 5-9 9-9-1 5-4 8-9 9z" fill="#15803D"/></svg>',
+'<svg viewBox="0 0 200 150"><rect x="58" y="26" width="84" height="14" rx="4" fill="#92400E"/><rect x="48" y="40" width="104" height="88" rx="16" fill="#F5F5F4"/><rect x="48" y="40" width="104" height="22" rx="12" fill="#E7E5E4"/><rect x="68" y="72" width="64" height="40" rx="6" fill="#FFFBEB"/><circle cx="100" cy="92" r="13" fill="#78350F"/><path d="M89 92a11 11 0 0022 0z" fill="#FAFAF9"/></svg>',
+'<svg viewBox="0 0 200 150"><rect x="38" y="84" width="124" height="42" rx="8" fill="#EA580C" transform="rotate(-4 100 105)"/><rect x="44" y="62" width="112" height="42" rx="8" fill="#F59E0B" transform="rotate(3 100 83)"/><rect x="50" y="40" width="100" height="42" rx="8" fill="#FBBF24"/><path d="M150 36c14-4 22 4 24 14-12 2-22-2-24-14z" fill="#15803D"/></svg>',
+'<svg viewBox="0 0 200 150"><path d="M62 38c12-14 64-14 76 0l16 80a10 10 0 01-10 12H56a10 10 0 01-10-12z" fill="#D6B98C"/><rect x="78" y="36" width="44" height="9" rx="4" fill="#92400E"/><rect x="76" y="68" width="48" height="38" rx="5" fill="#FEFCE8"/><g fill="#A16207"><ellipse cx="90" cy="84" rx="5" ry="2.2" transform="rotate(-30 90 84)"/><ellipse cx="104" cy="82" rx="5" ry="2.2" transform="rotate(20 104 82)"/><ellipse cx="97" cy="93" rx="5" ry="2.2"/><ellipse cx="111" cy="92" rx="5" ry="2.2" transform="rotate(-20 111 92)"/></g></svg>'];
+const PD=[{e:ART[0],i:'honey',u:'',v:[[0,650],[1,1250]]},{e:ART[1],i:'ghee',u:'',v:[[0,850],[1,1650]]},{e:ART[2],i:'mustard-oil',u:'',v:[[2,380],[3,740]]},{e:ART[3],i:'date-jaggery',u:'',v:[[0,320],[1,600]]},{e:ART[4],i:'litchi-honey',u:'',v:[[0,720],[1,1400]]},{e:ART[5],i:'coconut-oil',u:'',v:[[4,420],[2,800]]},{e:ART[6],i:'amsotto',u:'',v:[[5,280],[0,520]]},{e:ART[7],i:'chinigura-rice',u:'',v:[[6,380],[7,900]]}];
+const sel=[0,0,0,0,0,0,0,0];
+const L=()=>T[lang],t=k=>L()[k];
+const N=n=>lang==='bn'?'৳'+n.toLocaleString('bn-BD'):'৳'+n.toLocaleString('en-US');
+const D=s=>lang==='bn'?s.replace(/\d/g,d=>'০১২৩৪৫৬৭৮৯'[d]):s;
+const pic=p=>`<img src="images/${p.i}.jpg" alt="" loading="lazy" class="absolute inset-0 w-full h-full object-cover" onerror="${p.u?`this.onerror=function(){this.remove()};this.src='${p.u}'`:'this.remove()'}">`;
+const imgH=(p,c='')=>`<div class="img relative ${c}">${p.e}${pic(p)}</div>`;
+function toast(m){const e=$('#toast');e.textContent=m;e.style.opacity=1;clearTimeout(toast.t);toast.t=setTimeout(()=>e.style.opacity=0,1800)}
 
-      function addItem(i) {
-        const k = i + "-" + sel[i];
-        const f = cart.find((c) => c.k === k);
-        f ? f.q++ : cart.push({ k, i, v: sel[i], q: 1 });
-        toast(t("added"));
-        renderCart();
-      }
-      $("#addCombo").onclick = () => {
-        const f = cart.find((c) => c.k === "combo");
-        f ? f.q++ : cart.push({ k: "combo", q: 1 });
-        toast(t("added"));
-        renderCart();
-      };
-      function qty(k, d) {
-        const c = cart.find((c) => c.k === k);
-        c.q += d;
-        if (c.q < 1) cart = cart.filter((x) => x !== c);
-        renderCart();
-      }
-      const price = (c) => (c.k === "combo" ? COMBO : PD[c.i].v[c.v][1]);
-      const cname = (c) => (c.k === "combo" ? t("comboName") : t("P")[c.i].n);
-      const cvar = (c) => (c.k === "combo" ? "" : t("W")[PD[c.i].v[c.v][0]]);
-      function calc() {
-        const sub = cart.reduce((s, c) => s + price(c) * c.q, 0),
-          dis = coupon ? Math.round(sub * 0.1) : 0,
-          hasCombo = cart.some((c) => c.k === "combo");
-        const free = sub >= 1500 || hasCombo,
-          del = free ? 0 : +$("#zone").value;
-        return { sub, dis, del, free, tot: sub - dis + del };
-      }
-      function renderCart() {
-        try {
-          localStorage.setItem("kg_cart", JSON.stringify({ cart, coupon }));
-        } catch (e) {}
-        const n = cart.reduce((s, c) => s + c.q, 0);
-        $("#badge").textContent = $("#floatN").textContent = D(String(n));
-        $("#co").classList.toggle("hidden", !cart.length);
-        $("#floatSub").textContent = cart.length ? N(calc().sub) : "";
-        $("#items").innerHTML = cart.length
-          ? cart
-              .map(
-                (
-                  c,
-                ) => `<div class="flex gap-3 items-center card rounded-xl p-2.5"><div class="w-14 h-14 rounded-lg overflow-hidden shrink-0">${c.k === "combo" ? '<div class="img w-full h-full !text-2xl">🎁</div>' : imgH(PD[c.i], "w-full h-full !text-2xl")}</div>
+function applyStatic(){
+ document.documentElement.lang=lang;
+ $$('[data-i18n]').forEach(e=>{const v=t(e.dataset.i18n);if(typeof v==='string')e.textContent=v});
+ $$('[data-ph]').forEach(e=>e.placeholder=t(e.dataset.ph));
+ $('#themeBtn').textContent=dark?'☀️':'🌙';$$('#langBtn [data-l]').forEach(e=>e.classList.toggle('on',e.dataset.l===lang));
+ $('#cOld').textContent=N(COMBO_OLD);$('#cNew').textContent=N(COMBO);
+}
+function renderPage(){
+ $('#pillars').innerHTML=t('pil').map(p=>`<div class="card rounded-2xl p-5"><div class="text-3xl">${p[0]}</div><h3 class="font-bold mt-3 pri">${p[1]}</h3><p class="mu text-sm mt-1.5 leading-relaxed">${p[2]}</p></div>`).join('');
+ $('#grid').innerHTML=PD.map((p,i)=>{const x=t('P')[i],v=p.v[sel[i]];return `<article class="card rounded-2xl overflow-hidden flex flex-col"><div class="relative">${imgH(p,'aspect-[4/3]')}<span class="absolute top-2 left-2 text-[11px] rounded-full px-2 py-1 text-white" style="background:var(--pri)">${t('batch')}</span><span class="absolute bottom-2 left-2 text-[11px] rounded-full px-2 py-1 bg-white text-stone-800">${x.t}</span></div>
+ <div class="p-4 flex flex-col gap-3 flex-1"><div><h3 class="font-bold leading-snug">${x.n}</h3><p class="text-xs mu mt-1">${t('src')}: ${x.s}</p></div>
+ <div class="flex gap-2 flex-wrap">${p.v.map((q,j)=>`<button class="pill ${j===sel[i]?'on':''}" onclick="sel[${i}]=${j};renderPage()">${t('W')[q[0]]}</button>`).join('')}</div>
+ <p class="text-xs mu -mt-1">💡 ${t('U')[i][sel[i]]}</p><div class="text-2xl font-bold acc">${N(v[1])}</div>
+ <div class="flex gap-2 mt-auto"><button class="btn2 flex-1 !px-2 text-sm" onclick="qv(${i})">${t('det')}</button><button class="btn flex-1 !px-2 text-sm" onclick="addItem(${i})">${t('add')}</button></div></div></article>`}).join('');
+ $('#sources').innerHTML=t('S').map((s,i)=>`<div class="card rounded-2xl p-5 text-center"><div class="ico">${PD[i].e}</div><h3 class="font-bold mt-2 pri">${s[0]}</h3><p class="text-sm mu mt-1">${s[1]}</p></div>`).join('');
+ $('#cmp').innerHTML=t('cmp').map(r=>`<tr class="border-t" style="border-color:var(--bd)"><td class="p-4 font-semibold">${r[0]}</td><td class="p-4"><span class="text-emerald-600 font-bold">✓</span> ${r[1]}</td><td class="p-4 mu"><span class="text-red-500 font-bold">✗</span> ${r[2]}</td></tr>`).join('');
+ $('#tabs').innerHTML=t('tabs').map((x,i)=>`<button class="pill ${i===tab?'on':''}" onclick="tab=${i};renderPage()">${x[0]}</button>`).join('');
+ $('#tabBody').innerHTML=`<ol class="space-y-3">${t('tabs')[tab][1].map((s,i)=>`<li class="flex gap-3"><b class="pri shrink-0">${D(String(i+1))}.</b><span>${s}</span></li>`).join('')}</ol><span class="inline-block mt-5 text-sm font-semibold rounded-full px-4 py-1.5" style="background:var(--pri);color:var(--bg)">✔ ${t('cert')}</span>`;
+ $('#revs').innerHTML=t('revs').map(r=>`<div class="card rounded-2xl p-5"><div class="acc">★★★★★</div><p class="mt-2 text-sm leading-relaxed">${r[2]}</p><p class="mt-3 text-sm font-semibold">${r[0]} <span class="mu font-normal">· ${r[1]}</span></p></div>`).join('');
+ $('#faqs').innerHTML=t('faq').map(f=>`<details class="card rounded-xl p-4"><summary class="font-semibold cursor-pointer">${f[0]}</summary><p class="mu text-sm mt-2 leading-relaxed">${f[1]}</p></details>`).join('');
+ $('#pays').innerHTML=[['cod','cod'],['bkash','bk'],['nagad','ng']].map(p=>`<button class="pill ${pay===p[0]?'on':''}" onclick="pay='${p[0]}';renderPage();renderCart()">${t(p[1])}</button>`).join('');
+ $('#payBox').classList.toggle('hidden',pay==='cod');
+ renderCart();
+}
+
+function addItem(i){const k=i+'-'+sel[i];const f=cart.find(c=>c.k===k);f?f.q++:cart.push({k,i,v:sel[i],q:1});toast(t('added'));renderCart()}
+$('#addCombo').onclick=()=>{const f=cart.find(c=>c.k==='combo');f?f.q++:cart.push({k:'combo',q:1});toast(t('added'));renderCart()};
+function qty(k,d){const c=cart.find(c=>c.k===k);c.q+=d;if(c.q<1)cart=cart.filter(x=>x!==c);renderCart()}
+const price=c=>c.k==='combo'?COMBO:PD[c.i].v[c.v][1];
+const cname=c=>c.k==='combo'?t('comboName'):t('P')[c.i].n;
+const cvar=c=>c.k==='combo'?'':t('W')[PD[c.i].v[c.v][0]];
+function calc(){
+ const sub=cart.reduce((s,c)=>s+price(c)*c.q,0),dis=coupon?Math.round(sub*.1):0,hasCombo=cart.some(c=>c.k==='combo');
+ const free=sub>=1500||hasCombo,del=free?0:+$('#zone').value;
+ return{sub,dis,del,free,tot:sub-dis+del}
+}
+function renderCart(){try{localStorage.setItem('kg_cart',JSON.stringify({cart,coupon}))}catch(e){}
+ const n=cart.reduce((s,c)=>s+c.q,0);
+ $('#badge').textContent=$('#floatN').textContent=D(String(n));
+ $('#co').classList.toggle('hidden',!cart.length);$('#floatSub').textContent=cart.length?N(calc().sub):'';
+ $('#items').innerHTML=cart.length?cart.map(c=>`<div class="flex gap-3 items-center card rounded-xl p-2.5"><div class="w-14 h-14 rounded-lg overflow-hidden shrink-0">${c.k==='combo'?'<div class="img w-full h-full !text-2xl">🎁</div>':imgH(PD[c.i],'w-full h-full !text-2xl')}</div>
  <div class="flex-1 min-w-0"><div class="text-sm font-semibold leading-snug">${cname(c)}</div><div class="text-xs mu">${cvar(c)} · ${N(price(c))}</div>
- <div class="flex items-center gap-2 mt-1"><button class="pill !py-0 !min-h-0 w-7" onclick="qty('${c.k}',-1)">−</button><b class="text-sm">${D(String(c.q))}</b><button class="pill !py-0 !min-h-0 w-7" onclick="qty('${c.k}',1)">+</button><button class="ml-auto text-red-500 text-sm" onclick="qty('${c.k}',-99)" aria-label="Remove">🗑</button></div></div></div>`,
-              )
-              .join("")
-          : `<p class="mu text-sm py-8 text-center">${t("empty")}</p>`;
-        if (!cart.length) return;
-        const r = calc();
-        $("#eta").textContent = eta();
-        $("#fdTxt").textContent = r.free
-          ? t("fdOk")
-          : t("fdMore")(N(1500 - r.sub));
-        $("#fdBar").style.width =
-          (r.free ? 100 : Math.min(100, r.sub / 15)) + "%";
-        $("#sum").innerHTML =
-          `<div class="flex justify-between"><span>${t("sub")}</span><b>${N(r.sub)}</b></div>${r.dis ? `<div class="flex justify-between text-emerald-600"><span>${t("dis")}</span><b>−${N(r.dis)}</b></div>` : ""}<div class="flex justify-between"><span>${t("del")}</span><b>${r.free ? t("free") : N(r.del)}</b></div><div class="flex justify-between text-lg border-t pt-2 mt-1" style="border-color:var(--bd)"><span>${t("tot")}</span><b class="acc">${N(r.tot)}</b></div>`;
-      }
-      $("#zone").onchange = renderCart;
-      $("#applyCp").onclick = () => {
-        const ok = $("#coupon").value.trim().toUpperCase() === "KHATI10";
-        coupon = ok;
-        const m = $("#cpMsg");
-        m.textContent = ok ? t("cpOk") : t("cpBad");
-        m.style.color = ok ? "#059669" : "#DC2626";
-        renderCart();
-      };
+ <div class="flex items-center gap-2 mt-1"><button class="pill !py-0 !min-h-0 w-7" onclick="qty('${c.k}',-1)">−</button><b class="text-sm">${D(String(c.q))}</b><button class="pill !py-0 !min-h-0 w-7" onclick="qty('${c.k}',1)">+</button><button class="ml-auto text-red-500 text-sm" onclick="qty('${c.k}',-99)" aria-label="Remove">🗑</button></div></div></div>`).join(''):`<p class="mu text-sm py-8 text-center">${t('empty')}</p>`;
+ if(!cart.length)return;
+ const r=calc();
+ $('#eta').textContent=eta();$('#fdTxt').textContent=r.free?t('fdOk'):t('fdMore')(N(1500-r.sub));
+ $('#fdBar').style.width=(r.free?100:Math.min(100,r.sub/15))+'%';
+ $('#sum').innerHTML=`<div class="flex justify-between"><span>${t('sub')}</span><b>${N(r.sub)}</b></div>${r.dis?`<div class="flex justify-between text-emerald-600"><span>${t('dis')}</span><b>−${N(r.dis)}</b></div>`:''}<div class="flex justify-between"><span>${t('del')}</span><b>${r.free?t('free'):N(r.del)}</b></div><div class="flex justify-between text-lg border-t pt-2 mt-1" style="border-color:var(--bd)"><span>${t('tot')}</span><b class="acc">${N(r.tot)}</b></div>`;
+}
+$('#zone').onchange=renderCart;
+$('#applyCp').onclick=()=>{const ok=$('#coupon').value.trim().toUpperCase()==='KHATI10';coupon=ok;const m=$('#cpMsg');m.textContent=ok?t('cpOk'):t('cpBad');m.style.color=ok?'#059669':'#DC2626';renderCart()};
 
-      function qv(i) {
-        const p = PD[i],
-          x = t("P")[i],
-          q = t("qv");
-        $("#qvBody").innerHTML =
-          `${imgH(p, "aspect-[16/9] rounded-xl")}<h3 class="text-xl font-bold mt-4 pri">${x.n}</h3><dl class="text-sm mt-3 space-y-2.5"><div><dt class="font-semibold">${q.o}</dt><dd class="mu">${x.s}</dd></div><div><dt class="font-semibold">${q.d}</dt><dd class="mu">${t("batch")}</dd></div><div><dt class="font-semibold">${q.b}</dt><dd class="mu">${x.b}</dd></div><div><dt class="font-semibold">${q.s}</dt><dd class="mu">${x.st}</dd></div></dl><div class="flex gap-2 mt-5"><button class="btn flex-1" onclick="addItem(${i})">${t("add")}</button><button class="btn2" onclick="closeM()">${t("close")}</button></div>`;
-        $("#qv").classList.add("open");
-      }
-      function closeM() {
-        $$(".modal").forEach((m) => m.classList.remove("open"));
-      }
-      $$(".modal").forEach((m) =>
-        m.addEventListener("click", (e) => {
-          if (e.target === m) closeM();
-        }),
-      );
+function qv(i){const p=PD[i],x=t('P')[i],q=t('qv');$('#qvBody').innerHTML=`${imgH(p,'aspect-[16/9] rounded-xl')}<h3 class="text-xl font-bold mt-4 pri">${x.n}</h3><dl class="text-sm mt-3 space-y-2.5"><div><dt class="font-semibold">${q.o}</dt><dd class="mu">${x.s}</dd></div><div><dt class="font-semibold">${q.d}</dt><dd class="mu">${t('batch')}</dd></div><div><dt class="font-semibold">${q.b}</dt><dd class="mu">${x.b}</dd></div><div><dt class="font-semibold">${q.s}</dt><dd class="mu">${x.st}</dd></div></dl><div class="flex gap-2 mt-5"><button class="btn flex-1" onclick="addItem(${i})">${t('add')}</button><button class="btn2" onclick="closeM()">${t('close')}</button></div>`;$('#qv').classList.add('open')}
+function closeM(){$$('.modal').forEach(m=>m.classList.remove('open'))}
+$$('.modal').forEach(m=>m.addEventListener('click',e=>{if(e.target===m)closeM()}));
 
-      function openCart(o) {
-        $("#drawer").style.transform = o ? "translateX(0)" : "";
-        $("#ov").classList.toggle("hidden", !o);
-      }
-      $("#cartBtn").onclick = $("#floatCart").onclick = () => openCart(true);
-      $("#closeCart").onclick = $("#ov").onclick = () => openCart(false);
-      function mMenu(o) {
-        $("#mdrawer").classList.toggle("open", o);
-        $("#mov").classList.toggle("open", o);
-        document.body.style.overflow = o ? "hidden" : "";
-      }
-      $("#menuBtn").onclick = () => mMenu(true);
-      $("#mClose").onclick = $("#mov").onclick = () => mMenu(false);
-      addEventListener("keydown", (e) => {
-        if (e.key === "Escape") mMenu(false);
-      });
-      $$("#mnav a").forEach((a) =>
-        a.addEventListener("click", () => mMenu(false)),
-      );
+function openCart(o){$('#drawer').style.transform=o?'translateX(0)':'';$('#ov').classList.toggle('hidden',!o)}
+$('#cartBtn').onclick=$('#floatCart').onclick=()=>openCart(true);
+$('#closeCart').onclick=$('#ov').onclick=()=>openCart(false);
+function mMenu(o){$('#mdrawer').classList.toggle('open',o);$('#mov').classList.toggle('open',o);document.body.style.overflow=o?'hidden':''}
+$('#menuBtn').onclick=()=>mMenu(true);$('#mClose').onclick=$('#mov').onclick=()=>mMenu(false);addEventListener('keydown',e=>{if(e.key==='Escape')mMenu(false)});
+$$('#mnav a').forEach(a=>a.addEventListener('click',()=>mMenu(false)));
 
-      $("#langBtn").onclick = () => {
-        lang = lang === "bn" ? "en" : "bn";
-        localStorage.setItem("kg_lang", lang);
-        applyStatic();
-        $("#cpMsg").textContent = t(coupon ? "cpOk" : "cpHint");
-        $("#cpMsg").style.color = coupon ? "#059669" : "";
-        $("#cbMsg").textContent = "";
-        renderPage();
-        if ($("#tm").classList.contains("open")) renderTrack();
-      };
-      $("#themeBtn").onclick = () => {
-        dark = !dark;
-        document.documentElement.classList.toggle("dark", dark);
-        localStorage.setItem("kg_theme", dark ? "dark" : "light");
-        $("#themeBtn").textContent = dark ? "☀️" : "🌙";
-      };
+$('#langBtn').onclick=()=>{lang=lang==='bn'?'en':'bn';localStorage.setItem('kg_lang',lang);applyStatic();$('#cpMsg').textContent=t(coupon?'cpOk':'cpHint');$('#cpMsg').style.color=coupon?'#059669':'';$('#cbMsg').textContent='';renderPage();if($('#tm').classList.contains('open'))renderTrack()};
+$('#themeBtn').onclick=()=>{dark=!dark;document.documentElement.classList.toggle('dark',dark);localStorage.setItem('kg_theme',dark?'dark':'light');$('#themeBtn').textContent=dark?'☀️':'🌙'};
 
-      $("#confirm").onclick = () => {
-        const name = $("#fName").value.trim(),
-          ph = $("#fPhone")
-            .value.replace(/[\s-]/g, "")
-            .replace(/^\+?88/, ""),
-          ad = $("#fAddr").value.trim(),
-          trx = $("#trx").value.trim();
-        const err = !name
-          ? "eName"
-          : !/^01[3-9]\d{8}$/.test(ph)
-            ? "ePhone"
-            : !ad
-              ? "eAddr"
-              : pay !== "cod" && !trx
-                ? "eTrx"
-                : null;
-        if (err) {
-          toast(t(err));
-          return;
-        }
-        const g = $("#gift").checked,
-          hp = g && $("#hidePrice").checked,
-          gm = $("#gMsg").value.trim(),
-          r = calc(),
-          id = "#KG-" + Math.floor(1000 + Math.random() * 9000),
-          payName =
-            t(pay === "cod" ? "cod" : pay === "bkash" ? "bk" : "ng") +
-            (pay !== "cod" ? ` (TrxID: ${trx})` : "");
-        const lines = cart.map(
-          (c) =>
-            `${cname(c)}${cvar(c) ? " (" + cvar(c) + ")" : ""} × ${D(String(c.q))} = ${N(price(c) * c.q)}`,
-        );
-        const giftTxt = g
-          ? "\n\n🎁 " +
-            t("giftYes") +
-            (hp ? "\n" + t("hideP") : "") +
-            (gm ? "\n" + t("gMsg") + ": " + gm : "")
-          : "";
-        const msg = `${lang === "bn" ? "নতুন অর্ডার" : "New Order"} ${id}\n\n${lines.join("\n")}\n\n${t("tot")}: ${N(r.tot)}\n${lang === "bn" ? "পেমেন্ট" : "Payment"}: ${payName}\n${lang === "bn" ? "নাম" : "Name"}: ${name}\n${lang === "bn" ? "মোবাইল" : "Mobile"}: ${ph}\n${lang === "bn" ? "ঠিকানা" : "Address"}: ${ad}${giftTxt}`;
-        $("#omBody").innerHTML =
-          `<h3 class="text-xl font-bold pri">${t("oT")}</h3><p class="mt-2 text-sm">${t("oId")}: <b class="acc">${id}</b></p><ul class="text-sm mt-3 space-y-1 mu">${(hp ? lines.map((l) => l.split(" = ")[0]) : lines).map((l) => `<li>${l}</li>`).join("")}</ul><div class="text-sm mt-3 space-y-1"><div class="flex justify-between"><span>${t("del")}</span><b>${r.free ? t("free") : N(r.del)}</b></div><div class="flex justify-between text-lg"><span>${t("tot")}</span><b class="acc">${N(r.tot)}</b></div><div class="mu">${payName}</div><div class="mu">${esc(name)} · ${ph}<br>${esc(ad)}</div>${g ? `<div class="mu mt-1">🎁 ${t("giftYes")}${hp ? " · " + t("hideP") : ""}${gm ? "<br>“" + esc(gm) + "”" : ""}</div>` : ""}</div><p class="mu text-sm mt-3">${t("oSub")}</p><a target="_blank" rel="noopener" href="https://wa.me/8801711000000?text=${encodeURIComponent(msg)}" class="block text-center text-white font-semibold rounded-full py-3 mt-4" style="background:#25D366">${t("wa")}</a><button class="btn2 w-full mt-2" onclick="closeM()">${t("close")}</button>`;
-        saveOrder(id, r.tot, +$("#zone").value);
-        cart = [];
-        coupon = false;
-        $("#gift").checked = false;
-        $("#giftBox").classList.add("hidden");
-        $("#gMsg").value = "";
-        $("#hidePrice").checked = false;
-        $("#cpMsg").textContent = t("cpHint");
-        $("#cpMsg").style.color = "";
-        $("#coupon").value = "";
-        ["#fName", "#fPhone", "#fAddr", "#trx"].forEach(
-          (s) => ($(s).value = ""),
-        );
-        openCart(false);
-        renderCart();
-        $("#om").classList.add("open");
-      };
+$('#confirm').onclick=()=>{
+ const name=$('#fName').value.trim(),ph=$('#fPhone').value.replace(/[\s-]/g,'').replace(/^\+?88/,''),ad=$('#fAddr').value.trim(),trx=$('#trx').value.trim();
+ const err=!name?'eName':!/^01[3-9]\d{8}$/.test(ph)?'ePhone':!ad?'eAddr':(pay!=='cod'&&!trx)?'eTrx':null;
+ if(err){toast(t(err));return}
+ const g=$('#gift').checked,hp=g&&$('#hidePrice').checked,gm=$('#gMsg').value.trim(),r=calc(),id='#KG-'+Math.floor(1000+Math.random()*9000),payName=t(pay==='cod'?'cod':pay==='bkash'?'bk':'ng')+(pay!=='cod'?` (TrxID: ${trx})`:'');
+ const lines=cart.map(c=>`${cname(c)}${cvar(c)?' ('+cvar(c)+')':''} × ${D(String(c.q))} = ${N(price(c)*c.q)}`);
+ const giftTxt=g?'\n\n🎁 '+t('giftYes')+(hp?'\n'+t('hideP'):'')+(gm?'\n'+t('gMsg')+': '+gm:''):'';const msg=`${lang==='bn'?'নতুন অর্ডার':'New Order'} ${id}\n\n${lines.join('\n')}\n\n${t('tot')}: ${N(r.tot)}\n${lang==='bn'?'পেমেন্ট':'Payment'}: ${payName}\n${lang==='bn'?'নাম':'Name'}: ${name}\n${lang==='bn'?'মোবাইল':'Mobile'}: ${ph}\n${lang==='bn'?'ঠিকানা':'Address'}: ${ad}${giftTxt}`;
+ $('#omBody').innerHTML=`<h3 class="text-xl font-bold pri">${t('oT')}</h3><p class="mt-2 text-sm">${t('oId')}: <b class="acc">${id}</b></p><ul class="text-sm mt-3 space-y-1 mu">${(hp?lines.map(l=>l.split(' = ')[0]):lines).map(l=>`<li>${l}</li>`).join('')}</ul><div class="text-sm mt-3 space-y-1"><div class="flex justify-between"><span>${t('del')}</span><b>${r.free?t('free'):N(r.del)}</b></div><div class="flex justify-between text-lg"><span>${t('tot')}</span><b class="acc">${N(r.tot)}</b></div><div class="mu">${payName}</div><div class="mu">${esc(name)} · ${ph}<br>${esc(ad)}</div>${g?`<div class="mu mt-1">🎁 ${t('giftYes')}${hp?' · '+t('hideP'):''}${gm?'<br>“'+esc(gm)+'”':''}</div>`:''}</div><p class="mu text-sm mt-3">${t('oSub')}</p><a target="_blank" rel="noopener" href="https://wa.me/8801711000000?text=${encodeURIComponent(msg)}" class="block text-center text-white font-semibold rounded-full py-3 mt-4" style="background:#25D366">${t('wa')}</a><button class="btn2 w-full mt-2" onclick="closeM()">${t('close')}</button>`;
+ saveOrder(id,r.tot,+$('#zone').value);cart=[];coupon=false;$('#gift').checked=false;$('#giftBox').classList.add('hidden');$('#gMsg').value='';$('#hidePrice').checked=false;$('#cpMsg').textContent=t('cpHint');$('#cpMsg').style.color='';$('#coupon').value='';['#fName','#fPhone','#fAddr','#trx'].forEach(s=>$(s).value='');
+ openCart(false);renderCart();$('#om').classList.add('open');
+};
 
-      const esc = (s) =>
-        String(s).replace(
-          /[&<>"]/g,
-          (c) => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;" })[c],
-        );
-      const okPh = (s) =>
-        /^01[3-9]\d{8}$/.test(s.replace(/[\s-]/g, "").replace(/^\+?88/, ""));
-      function eta() {
-        const z = +$("#zone").value === 70,
-          [a, b] = z ? [1, 2] : [2, 4],
-          d = (n) => {
-            const x = new Date();
-            x.setDate(x.getDate() + n);
-            return x;
-          },
-          A = d(a),
-          B = d(b),
-          bn = lang === "bn",
-          f = (x, o) => x.toLocaleDateString(bn ? "bn-BD" : "en-US", o),
-          m = bn
-            ? { day: "numeric", month: "long" }
-            : { month: "short", day: "numeric" };
-        return (
-          t("eta") +
-          (bn && A.getMonth() === B.getMonth()
-            ? f(A, { day: "numeric" })
-            : f(A, m)) +
-          " – " +
-          f(B, m)
-        );
-      }
-      $("#gift").onchange = (e) => {
-        const b = $("#giftBox");
-        if (e.target.checked) {
-          b.classList.remove("hidden");
-          b.classList.add("fade");
-        } else b.classList.add("hidden");
-      };
-      $("#cbBtn").onclick = () => {
-        const v = $("#cbPh").value,
-          m = $("#cbMsg"),
-          ok = okPh(v);
-        m.textContent = t(ok ? "cbOk" : "cbBad");
-        m.style.color = ok ? "#059669" : "#DC2626";
-        if (ok) {
-          try {
-            const a = JSON.parse(localStorage.getItem("kg_cb") || "[]");
-            a.push({ p: v, d: new Date().toISOString() });
-            localStorage.setItem("kg_cb", JSON.stringify(a));
-          } catch (e) {}
-          $("#cbPh").value = "";
-        }
-      };
-      let lastId = null;
-      const orders = () => {
-        let s = {};
-        try {
-          s = JSON.parse(localStorage.getItem("kg_orders")) || {};
-        } catch (e) {}
-        return {
-          "#KG-5924": {
-            d: new Date(Date.now() - 864e5).toISOString(),
-            t: 1530,
-            z: 70,
-            s: 2,
-          },
-          ...s,
-        };
-      };
-      function saveOrder(id, tot, z) {
-        const s = orders();
-        delete s["#KG-5924"];
-        s[id] = { d: new Date().toISOString(), t: tot, z, s: 0 };
-        try {
-          localStorage.setItem("kg_orders", JSON.stringify(s));
-        } catch (e) {}
-      }
-      function openTrack() {
-        lastId = null;
-        renderTrack();
-        $("#tm").classList.add("open");
-      }
-      function doTrack() {
-        let v = $("#trId").value.trim().toUpperCase().replace(/\s/g, "");
-        if (v && v[0] !== "#") v = "#" + v;
-        lastId = v;
-        renderTrack();
-      }
-      function renderTrack() {
-        let res = "";
-        if (lastId !== null) {
-          const o = orders()[lastId];
-          res = !o
-            ? `<p class="mt-4 text-sm text-red-500">${t("trBad")}</p>`
-            : `<div class="mt-5"><div class="h-1.5 rounded-full" style="background:var(--bd)"><div class="h-1.5 rounded-full" style="background:var(--acc);width:${(o.s + 1) * 25}%"></div></div>
-  <ol class="grid grid-cols-4 mt-3 text-center text-[11px] gap-1">${t("trSteps")
-    .map(
-      (x, i) =>
-        `<li><div class="mx-auto w-8 h-8 rounded-full flex items-center justify-center text-sm" style="${i <= o.s ? "background:var(--pri);color:var(--bg)" : "background:var(--bd)"}">${i <= o.s ? "✓" : D(String(i + 1))}</div><div class="mt-1.5 ${i <= o.s ? "font-semibold" : "mu"}">${x}</div></li>`,
-    )
-    .join("")}</ol>
-  <dl class="text-sm mt-5 space-y-1.5"><div class="flex justify-between"><dt class="mu">${t("oId")}</dt><dd class="font-semibold">${esc(lastId)}</dd></div><div class="flex justify-between"><dt class="mu">${t("trDate")}</dt><dd>${new Date(o.d).toLocaleDateString(lang === "bn" ? "bn-BD" : "en-US", { day: "numeric", month: "long", year: "numeric" })}</dd></div><div class="flex justify-between"><dt class="mu">${t("tot")}</dt><dd class="font-semibold acc">${N(o.t)}</dd></div><div class="flex justify-between"><dt class="mu">${t("trAreaL")}</dt><dd>${t("trArea")[o.z === 70 ? 0 : 1]}</dd></div></dl></div>`;
-        }
-        $("#tmBody").innerHTML =
-          `<div class="flex justify-between items-center"><h3 class="text-xl font-bold pri">${t("trT")}</h3><button class="pill" onclick="closeM()" aria-label="Close">✕</button></div><div class="flex gap-2 mt-4"><input id="trId" class="inp" placeholder="#KG-0000" value="${esc(lastId || "")}" onkeydown="if(event.key==='Enter')doTrack()"><button class="btn" onclick="doTrack()">${t("trBtn")}</button></div><button class="text-xs acc mt-2" onclick="$('#trId').value='#KG-5924';doTrack()">${t("trDemo")} #KG-5924</button>${res}`;
-      }
-      $$("[data-track]").forEach((a) =>
-        a.addEventListener("click", (e) => {
-          e.preventDefault();
-          openTrack();
-        }),
-      );
-      try {
-        const sv = JSON.parse(localStorage.getItem("kg_cart"));
-        if (sv) {
-          cart = (sv.cart || []).filter(
-            (c) =>
-              c && (c.k === "combo" || (PD[c.i] && PD[c.i].v[c.v] && c.q > 0)),
-          );
-          coupon = !!sv.coupon;
-          if (coupon) $("#coupon").value = "KHATI10";
-        }
-      } catch (e) {}
-      document.documentElement.classList.toggle("dark", dark);
-      $("#heroArt").innerHTML = ART.slice(0, 4).join("");
-      applyStatic();
-      renderPage();
-      if (coupon) {
-        $("#cpMsg").textContent = t("cpOk");
-        $("#cpMsg").style.color = "#059669";
-      }
-    </script>
-  </body>
+const esc=s=>String(s).replace(/[&<>"]/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]));
+const okPh=s=>/^01[3-9]\d{8}$/.test(s.replace(/[\s-]/g,'').replace(/^\+?88/,''));
+function eta(){const z=+$('#zone').value===70,[a,b]=z?[1,2]:[2,4],d=n=>{const x=new Date();x.setDate(x.getDate()+n);return x},A=d(a),B=d(b),bn=lang==='bn',f=(x,o)=>x.toLocaleDateString(bn?'bn-BD':'en-US',o),m=bn?{day:'numeric',month:'long'}:{month:'short',day:'numeric'};
+return t('eta')+(bn&&A.getMonth()===B.getMonth()?f(A,{day:'numeric'}):f(A,m))+' – '+f(B,m)}
+$('#gift').onchange=e=>{const b=$('#giftBox');if(e.target.checked){b.classList.remove('hidden');b.classList.add('fade')}else b.classList.add('hidden')};
+$('#cbBtn').onclick=()=>{const v=$('#cbPh').value,m=$('#cbMsg'),ok=okPh(v);m.textContent=t(ok?'cbOk':'cbBad');m.style.color=ok?'#059669':'#DC2626';if(ok){try{const a=JSON.parse(localStorage.getItem('kg_cb')||'[]');a.push({p:v,d:new Date().toISOString()});localStorage.setItem('kg_cb',JSON.stringify(a))}catch(e){}$('#cbPh').value=''}};
+let lastId=null;
+const orders=()=>{let s={};try{s=JSON.parse(localStorage.getItem('kg_orders'))||{}}catch(e){}return{'#KG-5924':{d:new Date(Date.now()-864e5).toISOString(),t:1530,z:70,s:2},...s}};
+function saveOrder(id,tot,z){const s=orders();delete s['#KG-5924'];s[id]={d:new Date().toISOString(),t:tot,z,s:0};try{localStorage.setItem('kg_orders',JSON.stringify(s))}catch(e){}}
+function openTrack(){lastId=null;renderTrack();$('#tm').classList.add('open')}
+function doTrack(){let v=$('#trId').value.trim().toUpperCase().replace(/\s/g,'');if(v&&v[0]!=='#')v='#'+v;lastId=v;renderTrack()}
+function renderTrack(){
+ let res='';
+ if(lastId!==null){const o=orders()[lastId];
+  res=!o?`<p class="mt-4 text-sm text-red-500">${t('trBad')}</p>`:`<div class="mt-5"><div class="h-1.5 rounded-full" style="background:var(--bd)"><div class="h-1.5 rounded-full" style="background:var(--acc);width:${(o.s+1)*25}%"></div></div>
+  <ol class="grid grid-cols-4 mt-3 text-center text-[11px] gap-1">${t('trSteps').map((x,i)=>`<li><div class="mx-auto w-8 h-8 rounded-full flex items-center justify-center text-sm" style="${i<=o.s?'background:var(--pri);color:var(--bg)':'background:var(--bd)'}">${i<=o.s?'✓':D(String(i+1))}</div><div class="mt-1.5 ${i<=o.s?'font-semibold':'mu'}">${x}</div></li>`).join('')}</ol>
+  <dl class="text-sm mt-5 space-y-1.5"><div class="flex justify-between"><dt class="mu">${t('oId')}</dt><dd class="font-semibold">${esc(lastId)}</dd></div><div class="flex justify-between"><dt class="mu">${t('trDate')}</dt><dd>${new Date(o.d).toLocaleDateString(lang==='bn'?'bn-BD':'en-US',{day:'numeric',month:'long',year:'numeric'})}</dd></div><div class="flex justify-between"><dt class="mu">${t('tot')}</dt><dd class="font-semibold acc">${N(o.t)}</dd></div><div class="flex justify-between"><dt class="mu">${t('trAreaL')}</dt><dd>${t('trArea')[o.z===70?0:1]}</dd></div></dl></div>`}
+ $('#tmBody').innerHTML=`<div class="flex justify-between items-center"><h3 class="text-xl font-bold pri">${t('trT')}</h3><button class="pill" onclick="closeM()" aria-label="Close">✕</button></div><div class="flex gap-2 mt-4"><input id="trId" class="inp" placeholder="#KG-0000" value="${esc(lastId||'')}" onkeydown="if(event.key==='Enter')doTrack()"><button class="btn" onclick="doTrack()">${t('trBtn')}</button></div><button class="text-xs acc mt-2" onclick="$('#trId').value='#KG-5924';doTrack()">${t('trDemo')} #KG-5924</button>${res}`}
+$$('[data-track]').forEach(a=>a.addEventListener('click',e=>{e.preventDefault();openTrack()}));
+try{const sv=JSON.parse(localStorage.getItem('kg_cart'));if(sv){cart=(sv.cart||[]).filter(c=>c&&(c.k==='combo'||(PD[c.i]&&PD[c.i].v[c.v])&&c.q>0));coupon=!!sv.coupon;if(coupon)$('#coupon').value='KHATI10'}}catch(e){}
+document.documentElement.classList.toggle('dark',dark);
+$('#heroArt').innerHTML=PD.slice(0,4).map(p=>`<div class="relative w-full overflow-hidden rounded-xl" style="aspect-ratio:4/3">${p.e}${pic(p)}</div>`).join('');
+applyStatic();renderPage();if(coupon){$('#cpMsg').textContent=t('cpOk');$('#cpMsg').style.color='#059669'}
+</script>
+</body>
 </html>
